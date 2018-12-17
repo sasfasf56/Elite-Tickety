@@ -90,11 +90,10 @@ client.on("message", (message) => {
  
  
   if (message.content.startsWith("-close")) {
-       let EliteTeam = message.guild.roles.find("name", "Elite Team ♪..");
 	              	   const d11xxx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`Elite Team ♪..\`\` to yourself.")  
      .setColor("22BF41");
-	  if(!message.member.roles.has(EliteTeam)) return message.channel.send(d11xxx);
+	  if(!message.member.roles.find("name", "Elite Team ♪..")) return message.channel.send(d11xxx);
 	   	   const d1x = new Discord.RichEmbed()
      .setDescription(`:x: Please only run this command in a ticket channel!`)  
      .setColor("22BF41")
