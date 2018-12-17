@@ -72,9 +72,8 @@ client.on("message", (message) => {
      .setColor("22BF41")
             message.channel.send(d1);
             const nonedear = new Discord.RichEmbed()
-     .setDescription(`Dear ${message.author}, \nThank you for reaching out to our support team!\nWe will get back to you as soon as possible\n`) 
+     .setDescription(`Dear ${message.author}, \n\nThank you for reaching out to our support team!\n\nWe will get back to you as soon as possible\n`) 
      .setColor("22BF41")
-     .setAuthor(message.author.tag , message.author.avatarURL)
      .setFooter(`Elite Tickety v1.0` , client.user.avatarURL)
      .setTimestamp();
             ticketx.send({
