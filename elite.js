@@ -130,8 +130,7 @@ client.on("message", (message) => {
 	   	   const d1dx = new Discord.RichEmbed()
      .setDescription(`:x: Please only run this command in a ticket channel!`)  
      .setColor("22BF41")
-        if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(d1dx);
-	if (!message.channel.name.startsWith(`${newname}-` + ticketnumber)) return message.channel.send(d1dx);
+	if (!message.channel.name.startsWith(`${newname}-` + ticketnumber || `ticket-`)) return message.channel.send(d1dx);
 		const usageof = new Discord.RichEmbed()
      .setDescription(`:x: Usage: \`\`-rename <name>\`\``)  
      .setColor("22BF41");
