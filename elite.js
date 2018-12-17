@@ -46,7 +46,7 @@ client.on("message", (message) => {
 	          const already = new Discord.RichEmbed()
      .setDescription(":x: You can only have \`\`1\`\` ticket in this server! you already have \`\`1\`\`")  
      .setColor("22BF41");
-        if (message.guild.channels.exists("name", "ticket-" + ticketnumber) || ("name", `${newname}-` + ticketnumber)) return message.channel.send(already); 
+        if (message.guild.channels.exists("name", "ticket-" + ticketnumber)) return message.channel.send(already); 
 	   if(!elite) {
                 message.guild.createChannel("Elite Tickets ♪..", "category");
             };
@@ -133,9 +133,9 @@ client.on("message", (message) => {
 	   	   const d1dx = new Discord.RichEmbed()
      .setDescription(`:x: Please only run this command in a ticket channel!`)  
      .setColor("22BF41")
-        if (!message.channel.name.startsWith(`ticket-`) || (`${newname}-`)) return message.channel.send(d1dx);
+        if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(d1dx);
 		
-	message.channel.setName(newname);
+	message.channel.setName("ticket-" + newname);
 		
 		const renamed = new Discord.RichEmbed()
      .setDescription(`:x: The channel has been renamed to ` + `\n\`\`${newname}\`\``)  
