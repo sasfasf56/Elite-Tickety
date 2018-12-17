@@ -89,11 +89,7 @@ client.on("message", (message) => {
             });
         }).catch(console.error);
    }
-	
-  if (message.content.startsWith("-rename")) {
-          
- 
- 
+	  
   if (message.content.startsWith("-close")) {
 	              	   const d11xxx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`Elite Team ♪..\`\` to yourself.")  
