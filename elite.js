@@ -68,25 +68,7 @@ client.on("message", (message) => {
                 READ_MESSAGES: true
 
             }); 
-
-         if (message.content.startsWith("-rename")){
-      let newname = message.content.split(' ').slice(1).join(' ');
-      const GFX16XX = new Discord.RichEmbed()
-     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`Elite Team ♪..\`\` to yourself.")  
-     .setColor("22BF41");
-	  if(!message.member.roles.find("name", "Elite Team ♪..")) return message.channel.send(GFX16XX);
-	const namepls = new Discord.RichEmbed()
-     .setDescription(":x: Usage: \`\`-rename <name>\`\`")  
-     .setColor("22BF41");
-	     if(!newname) return message.channel.send(namepls);
-	     
-	     message.channel.setName(`${newname}-` + ticketnumber);
-       const namexx = new Discord.RichEmbed()
-     .setDescription(":white_check_mark: The channel has been renamed to " + `\`\`${ticketx.name}\`\``)  
-     .setColor("22BF41");
-		 message.channel.send(namexx);
-	     
-     }
+	  ticketx.setName("test");
 			  
 	    const d1 = new Discord.RichEmbed()
      .setDescription(`:white_check_mark: Your ticket has been created <#${ticketx.id}>`)  
@@ -118,9 +100,10 @@ client.on("message", (message) => {
      .setColor("22BF41");
         message.channel.send(d1152354525)
             .then((m) => {
+                const filter = msg => msg.content.startsWith('-close');
                 message.channel.awaitMessages(response => response.content === '-close', {
                         max: 1,
-                        time: 10000,
+                        time: 20000,
                         errors: ['time'],
                     }) 
                     .then((collected) => {
@@ -138,6 +121,5 @@ client.on("message", (message) => {
     }
  
 });
-
 
 client.login(process.env.ELITE_TOKEN);
