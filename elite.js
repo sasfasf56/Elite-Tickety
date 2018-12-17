@@ -46,7 +46,7 @@ client.on("message", (message) => {
 	          const already = new Discord.RichEmbed()
      .setDescription(":x: You can only have \`\`1\`\` ticket in this server! you already have \`\`1\`\`")  
      .setColor("22BF41");
-	if (message.channel.name.startsWith(`${newname}-` + ticketnumber)) return message.channel.send(already);
+	if (!message.channel.name.startsWith(`${newname}-` + ticketnumber)) return message.channel.send(already);
         if (message.guild.channels.exists("name", "ticket-" + ticketnumber)) return message.channel.send(already);  
 	   if(!elite) {
                 message.guild.createChannel("Elite Tickets ♪..", "category");
@@ -108,6 +108,7 @@ client.on("message", (message) => {
                     }) 
                     .then((collected) => {
                         message.delete();
+			message.delete(4000);
                         message.channel.delete();
                     })  
                     .catch(() => {
