@@ -37,11 +37,11 @@ client.user.setGame(`Elite Community  ♪..`,'https://www.twitch.tv/Elite-Commun
 client.on("message", (message) => {
    if (message.content.startsWith("-new")) {
 	let ticketnumber = message.author.discriminator;
+	let elite = message.guild.channels.find("name", "Elite Tickets ♪..");      
 	let subject = message.content.split(' ').slice(1).join(' ');
 	   if(!subject) {
 	     let subject = "No subject given";
 	   }
-        let elite = message.guild.channels.find("name", "Elite Tickets ♪..");   
 			     const rerole = new Discord.RichEmbed()
      .setDescription(":x: Please first make a role called exactly \`\`Elite Team ♪..\`\`")  
      .setColor("22BF41");		    
