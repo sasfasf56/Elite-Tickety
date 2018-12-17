@@ -68,19 +68,17 @@ client.on("message", (message) => {
                 READ_MESSAGES: true
 
             }); 
-		
+
          if (message.content.startsWith("-rename")){
       let newname = message.content.split(' ').slice(1).join(' ');
       const GFX16XX = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`Elite Team ♪..\`\` to yourself.")  
      .setColor("22BF41");
 	  if(!message.member.roles.find("name", "Elite Team ♪..")) return message.channel.send(GFX16XX);
-	     if(!newname){
-            const namepls = new Discord.RichEmbed()
+	const namepls = new Discord.RichEmbed()
      .setDescription(":x: Usage: \`\`-rename <name>\`\`")  
      .setColor("22BF41");
-		  message.channel.send(namepls);
-	     }
+	     if(!newname) return message.channel.send(namepls);
 	     
 	     message.channel.setName(`${newname}-` + ticketnumber);
        const namexx = new Discord.RichEmbed()
@@ -140,5 +138,6 @@ client.on("message", (message) => {
     }
  
 });
+
 
 client.login(process.env.ELITE_TOKEN);
