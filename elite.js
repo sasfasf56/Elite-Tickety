@@ -138,7 +138,7 @@ client.on("message", (message) => {
 		
 		
 	if (message.channel.name.startsWith(`${newname}-` + ticketnumber)) {	
-	message.channel.setName(`${newname}-` + ticketnumber);
+	return message.channel.setName(`${newname}-` + ticketnumber);
 		
 		const renamed = new Discord.RichEmbed()
      .setDescription(`:white_check_mark: The channel has been renamed to ` + `\`\`${newname}\`\``)  
