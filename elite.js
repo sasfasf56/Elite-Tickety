@@ -39,9 +39,6 @@ client.on("message", (message) => {
 	let ticketnumber = message.author.discriminator;
 	let elite = message.guild.channels.find("name", "Elite Tickets ♪..");      
 	let subject = message.content.split(' ').slice(1).join(' ');
-	   if(!subject) {
-	     let subject = "No subject given";
-	   }
 			     const rerole = new Discord.RichEmbed()
      .setDescription(":x: Please first make a role called exactly \`\`Elite Team ♪..\`\`")  
      .setColor("22BF41");		    
@@ -85,6 +82,16 @@ client.on("message", (message) => {
             ticketx.send({
                 embed: nonedear
             });
+      	   if(!subject) {
+                   const nonedearxx = new Discord.RichEmbed()
+     .setDescription(`Dear ${message.author}, \nThank you for reaching out to our support team!\nWe will get back to you as soon as possible\n`)
+     .addField(`Subject`, "No subject given")    
+     .setColor("22BF41")
+     .setAuthor(message.author.tag , message.author.avatarURL)
+     .setFooter(`Elite Tickety v1.0` , client.user.avatarURL)
+     .setTimestamp();
+	    ticketx.edit(nonedearxx);
+	   }
         }).catch(console.error);
     }
  
@@ -99,7 +106,7 @@ client.on("message", (message) => {
      .setColor("22BF41")
         if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(d1x);
             	   const d11 = new Discord.RichEmbed()
-     .setDescription(`Are you sure you want to close this ticket ? The channel will be deleted.\n**Repeat the command to close the ticket.\nYour request will be voided in 20 seconds.`)  
+     .setDescription(`Are you sure you want to close this ticket? The channel will be deleted.\n**Repeat the command to close the ticket.**\nYour request will be voided in 20 seconds.`)  
      .setColor("22BF41");
         message.channel.send(d11)
             .then((m) => {
@@ -116,7 +123,6 @@ client.on("message", (message) => {
      .setDescription(`:x: Ticket close timed out , the ticket was not closed.`)  
      .setColor("22BF41")
                         m.edit(d11x).then(m2 => {
-                            m2.delete();
                         }, 3000);
                     });
             });
