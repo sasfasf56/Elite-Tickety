@@ -38,6 +38,7 @@ client.on("message", (message) => {
    if (message.content.startsWith("-new")) {
 	let ticketnumber = message.author.discriminator;
 	let elite = message.guild.channels.find("name", "Elite Tickets ♪..");
+	let newname = message.content.split(' ').slice(1).join(' ');
 			     const rerole = new Discord.RichEmbed()
      .setDescription(":x: Please first make a role called exactly \`\`Elite Team ♪..\`\`")  
      .setColor("22BF41");		    
@@ -66,8 +67,30 @@ client.on("message", (message) => {
             ticketx.overwritePermissions(message.author, {
                 SEND_MESSAGES: true,
                 READ_MESSAGES: true
-            });
-		   const d1 = new Discord.RichEmbed()
+
+            }); 
+		
+         if (message.content.startsWith("-rename")){
+      const GFX16XX = new Discord.RichEmbed()
+     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`Elite Team ♪..\`\` to yourself.")  
+     .setColor("22BF41");
+	  if(!message.member.roles.find("name", "Elite Team ♪..")) return message.channel.send(GFX16XX);
+		 
+	     if(!newname){
+            const namepls = new Discord.RichEmbed()
+     .setDescription(":x: Usage: \`\`-rename <name>\`\`")  
+     .setColor("22BF41");
+		  message.channel.send(namepls);
+	     }
+	     
+	     ticketx.setName(`{newname}-` + ticketnumber);
+       const namexx = new Discord.RichEmbed()
+     .setDescription(":white_check_mark: The channel has been renamed to " + `\`\`${ticketx.name}\`\``)  
+     .setColor("22BF41");
+	     
+     }
+			  
+	    const d1 = new Discord.RichEmbed()
      .setDescription(`:white_check_mark: Your ticket has been created <#${ticketx.id}>`)  
      .setColor("22BF41")
             message.channel.send(d1);
@@ -80,7 +103,7 @@ client.on("message", (message) => {
                 embed: nonedear
             });
         }).catch(console.error);
-    }
+   }
  
  
   if (message.content.startsWith("-close")) {
