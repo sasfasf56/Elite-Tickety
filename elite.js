@@ -47,7 +47,7 @@ client.on("message", (message) => {
      .setDescription(":x: You can only have \`\`1\`\` ticket in this server! you already have \`\`1\`\`")  
      .setColor("22BF41");
         if (message.guild.channels.exists("name", "ticket-" + ticketnumber)) return message.channel.send(already); 
-	if (message.guild.channels.exists("name", "ticket-")) return message.channel.send(already); 
+	if (message.guild.channels.exists("name", `${newname}-` + ticketnumber)) return message.channel.send(already); 
 	   if(!elite) {
                 message.guild.createChannel("Elite Tickets ♪..", "category");
             };
@@ -121,12 +121,8 @@ client.on("message", (message) => {
     }
  
 	if (message.content.startsWith("-rename")) {
+	let ticketnumber = message.author.discriminator;
          let newname = message.content.split(' ').slice(1).join(' ');
-		const usageof = new Discord.RichEmbed()
-     .setDescription(`:x: Usage: \`\`-rename <name>\`\``)  
-     .setColor("22BF41");
-	  if(!newname) return message.channel.send(usageof);
-		
 		              	   const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`Elite Team ♪..\`\` to yourself.")  
      .setColor("22BF41");
@@ -135,8 +131,13 @@ client.on("message", (message) => {
      .setDescription(`:x: Please only run this command in a ticket channel!`)  
      .setColor("22BF41")
         if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(d1dx);
+	if (!message.channel.name.startsWith(`$newname`- + ticketnumber)) return message.channel.send(d1dx);
+		const usageof = new Discord.RichEmbed()
+     .setDescription(`:x: Usage: \`\`-rename <name>\`\``)  
+     .setColor("22BF41");
+	  if(!newname) return message.channel.send(usageof);
 		
-	message.channel.setName("ticket-" + newname);
+	message.channel.setName(`${newname}-` + ticketnumber);
 		
 		const renamed = new Discord.RichEmbed()
      .setDescription(`:white_check_mark: The channel has been renamed to ` + `\`\`${newname}\`\``)  
