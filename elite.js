@@ -138,7 +138,7 @@ client.on("message", (message) => {
 	message.channel.setName("ticket-" + newname);
 		
 		const renamed = new Discord.RichEmbed()
-     .setDescription(`:white_check_mark: The channel has been renamed to ` + ``\`${newname}\`\``)  
+     .setDescription(`:white_check_mark: The channel has been renamed to ` + `\`\`${newname}\`\``)  
      .setColor("22BF41");
 		
          message.channel.send(renamed);
