@@ -37,8 +37,7 @@ client.user.setGame(`Elite Community  ♪..`,'https://www.twitch.tv/Elite-Commun
 client.on("message", (message) => {
    if (message.content.startsWith("-new")) {
 	let ticketnumber = message.author.discriminator;
-	let elite = message.guild.channels.find("name", "Elite Tickets ♪..");      
-	let subject = message.content.split(' ').slice(1).join(' ');
+	let elite = message.guild.channels.find("name", "Elite Tickets ♪..");
 			     const rerole = new Discord.RichEmbed()
      .setDescription(":x: Please first make a role called exactly \`\`Elite Team ♪..\`\`")  
      .setColor("22BF41");		    
@@ -73,8 +72,7 @@ client.on("message", (message) => {
      .setColor("22BF41")
             message.channel.send(d1);
             const nonedear = new Discord.RichEmbed()
-     .setDescription(`Dear ${message.author}, \nThank you for reaching out to our support team!\nWe will get back to you as soon as possible\n`)
-     .addField(`Subject`, subject)    
+     .setDescription(`Dear ${message.author}, \nThank you for reaching out to our support team!\nWe will get back to you as soon as possible\n`) 
      .setColor("22BF41")
      .setAuthor(message.author.tag , message.author.avatarURL)
      .setFooter(`Elite Tickety v1.0` , client.user.avatarURL)
@@ -82,16 +80,6 @@ client.on("message", (message) => {
             ticketx.send({
                 embed: nonedear
             });
-      	   if(!subject) {
-                   const nonedearxx = new Discord.RichEmbed()
-     .setDescription(`Dear ${message.author}, \nThank you for reaching out to our support team!\nWe will get back to you as soon as possible\n`)
-     .addField(`Subject`, "No subject given")    
-     .setColor("22BF41")
-     .setAuthor(message.author.tag , message.author.avatarURL)
-     .setFooter(`Elite Tickety v1.0` , client.user.avatarURL)
-     .setTimestamp();
-	    ticketx.edit(nonedearxx);
-	   }
         }).catch(console.error);
     }
  
