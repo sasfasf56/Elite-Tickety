@@ -39,10 +39,12 @@ client.on("message", (message) => {
 	let ticketnumber = message.author.discriminator;
 	let subject = message.content.split(' ').slice(1).join(' ');
         let elite = message.guild.channels.find("name", "Elite Tickets ♪..");   
-					    
-        if (!message.guild.roles.exists("name", "Elite Team ♪..")) return message.channel.send(":x: Please first make a role called exactly `\`\`Elite Team ♪..\`\``");
+			     const rerole = new Discord.RichEmbed()
+     .setDescription(":x: Please first make a role called exactly \`\`Elite Team ♪..\`\`")  
+     .setColor("1CE143");		    
+        if (!message.guild.roles.exists("name", "Elite Team ♪..")) return message.channel.send(rerole);
 	          const already = new Discord.RichEmbed()
-     .setDescription(":x: You can only have `\`\`1\`\`` ticket in this server! you already have `\`\`1\`\``")  
+     .setDescription(":x: You can only have \`\`1\`\` ticket in this server! you already have \`\`1\`\`")  
      .setColor("1CE143");
         if (message.guild.channels.exists("name", "ticket-${ticketnumber}" + ticketnumber)) return message.channel.send(already); 
 	   if(!elite) {
@@ -85,10 +87,11 @@ client.on("message", (message) => {
  
  
   if (message.content.startsWith("-close")) {
+       let EliteTeam = message.guild.roles.find("name", "Elite Team ♪..");
 	              	   const d11xxx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called `\`\`Elite Team ♪..\`\`` to yourself.")  
      .setColor("1CE143");
-	  if(!message.member.hasRole("Elite Tickets ♪..")) return message.channel.send(d11xxx);
+	  if(!message.member.roles.has(EliteTeam)) return message.channel.send(d11xxx);
 	   	   const d1x = new Discord.RichEmbed()
      .setDescription(`:x: Please only run this command in a ticket channel!`)  
      .setColor("1CE143")
