@@ -55,7 +55,7 @@ client.on("message", (message) => {
             let role = message.guild.roles.find("name", "Elite Team ♪..");
             let role2 = message.guild.roles.find("name", "@everyone");
 		  ticketx.setParent(elite);
-                  elite.setPosition(2);
+                  elite.setPosition(1);
             ticketx.overwritePermissions(role, {
                 SEND_MESSAGES: true,
                 READ_MESSAGES: true
