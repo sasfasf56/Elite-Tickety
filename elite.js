@@ -35,9 +35,9 @@ client.user.setGame(`Elite Community  ♪..`,'https://www.twitch.tv/Elite-Commun
 
  
 client.on("message", (message) => {
+         let newname = message.content.split(' ').slice(1).join(' ');
    if (message.content.startsWith("-new")) {
 	let ticketnumber = message.author.discriminator;
-	let newname = message.content.split(' ').slice(1).join(' ');
 	let elite = message.guild.channels.find("name", "Elite Tickets ♪..");
 			     const rerole = new Discord.RichEmbed()
      .setDescription(":x: Please first make a role called exactly \`\`Elite Team ♪..\`\`")  
@@ -46,8 +46,8 @@ client.on("message", (message) => {
 	          const already = new Discord.RichEmbed()
      .setDescription(":x: You can only have \`\`1\`\` ticket in this server! you already have \`\`1\`\`")  
      .setColor("22BF41");
-        if (message.guild.channels.exists("name", "ticket-${newname}" + newname + ticketnumber)) return message.channel.send(already);  
         if (message.guild.channels.exists("name", "ticket-" + ticketnumber)) return message.channel.send(already);  
+	if (message.guild.channels.exists("name", `${newname}-` + ticketnumber)) return message.channel.send(already);  
 	   if(!elite) {
                 message.guild.createChannel("Elite Tickets ♪..", "category");
             };
@@ -123,7 +123,6 @@ client.on("message", (message) => {
  
 	if (message.content.startsWith("-rename")) {
 	let ticketnumber = message.author.discriminator;
-         let newname = message.content.split(' ').slice(1).join(' ');
 		              	   const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`Elite Team ♪..\`\` to yourself.")  
      .setColor("22BF41");
