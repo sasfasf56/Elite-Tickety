@@ -38,7 +38,6 @@ client.on("message", (message) => {
    if (message.content.startsWith("-new")) {
 	let ticketnumber = message.author.discriminator;
 	let elite = message.guild.channels.find("name", "Elite Tickets ♪..");
-	let newname = message.content.split(' ').slice(1).join(' ');
 			     const rerole = new Discord.RichEmbed()
      .setDescription(":x: Please first make a role called exactly \`\`Elite Team ♪..\`\`")  
      .setColor("22BF41");		    
@@ -71,11 +70,11 @@ client.on("message", (message) => {
             }); 
 		
          if (message.content.startsWith("-rename")){
+      let newname = message.content.split(' ').slice(1).join(' ');
       const GFX16XX = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`Elite Team ♪..\`\` to yourself.")  
      .setColor("22BF41");
 	  if(!message.member.roles.find("name", "Elite Team ♪..")) return message.channel.send(GFX16XX);
-		 
 	     if(!newname){
             const namepls = new Discord.RichEmbed()
      .setDescription(":x: Usage: \`\`-rename <name>\`\`")  
