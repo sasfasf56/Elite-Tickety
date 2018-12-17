@@ -38,6 +38,9 @@ client.on("message", (message) => {
    if (message.content.startsWith("-new")) {
 	let ticketnumber = message.author.discriminator;
 	let subject = message.content.split(' ').slice(1).join(' ');
+	   if(!subject) {
+	     let subject = "No subject given";
+	   }
         let elite = message.guild.channels.find("name", "Elite Tickets ♪..");   
 			     const rerole = new Discord.RichEmbed()
      .setDescription(":x: Please first make a role called exactly \`\`Elite Team ♪..\`\`")  
@@ -46,7 +49,7 @@ client.on("message", (message) => {
 	          const already = new Discord.RichEmbed()
      .setDescription(":x: You can only have \`\`1\`\` ticket in this server! you already have \`\`1\`\`")  
      .setColor("22BF41");
-        if (message.guild.channels.exists("name", "ticket-${ticketnumber}" + ticketnumber)) return message.channel.send(already); 
+        if (message.guild.channels.exists("name", "ticket-" + ticketnumber)) return message.channel.send(already); 
 	   if(!elite) {
                 message.guild.createChannel("Elite Tickets ♪..", "category");
             };
@@ -76,8 +79,8 @@ client.on("message", (message) => {
      .setDescription(`Dear ${message.author}, \nThank you for reaching out to our support team!\nWe will get back to you as soon as possible\n`)
      .addField(`Subject`, subject)    
      .setColor("22BF41")
-     .setAuthor(`${message.author.tag}`, message.author.avatarURL)
-     .setFooter(client.user.avatarURL , `Elite Tickety v1.0`)
+     .setAuthor(message.author.tag , message.author.avatarURL)
+     .setFooter(`Elite Tickety v1.0` , client.user.avatarURL)
      .setTimestamp();
             ticketx.send({
                 embed: nonedear
