@@ -79,13 +79,14 @@ client.on("message", (message) => {
             const namepls = new Discord.RichEmbed()
      .setDescription(":x: Usage: \`\`-rename <name>\`\`")  
      .setColor("22BF41");
-		  message.channel.send(namepls);
+		  ticketx.send(namepls);
 	     }
 	     
-	     ticketx.setName(`{newname}-` + ticketnumber);
+	     ticketx.setName(`${newname}-` + ticketnumber);
        const namexx = new Discord.RichEmbed()
      .setDescription(":white_check_mark: The channel has been renamed to " + `\`\`${ticketx.name}\`\``)  
      .setColor("22BF41");
+		 ticketx.send(namexx);
 	     
      }
 			  
