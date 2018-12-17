@@ -48,7 +48,7 @@ client.on("message", (message) => {
      .setColor("22BF41");
         if (message.guild.channels.exists("name", "ticket-" + ticketnumber)) return message.channel.send(already);  
 	if (message.guild.channels.exists("name", `${newname}-` + ticketnumber)) return message.channel.send(already);  
-	if (!message.channel.name.startsWith(`${newname}-`)) return message.channel.send(already);
+	if (message.channel.name.startsWith(`${newname}-`)) return message.channel.send(already);
 	   if(!elite) {
                 message.guild.createChannel("Elite Tickets ♪..", "category");
             };
