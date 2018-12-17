@@ -68,12 +68,6 @@ client.on("message", (message) => {
                 READ_MESSAGES: true
 
             }); 
-			  
-      if (message.content.startsWith("-rename")) {
-         let newname = message.content.split(' ').slice(1).join(' ');
-	  if(!newname) return message.channel.send("TEST");
-         if(newname) return ticketx.setName(newname);
-      }
 		
 	    const d1 = new Discord.RichEmbed()
      .setDescription(`:white_check_mark: Your ticket has been created <#${ticketx.id}>`)  
@@ -124,6 +118,12 @@ client.on("message", (message) => {
             });
     }
  
+	      if (message.content.startsWith("-rename")) {
+         let newname = message.content.split(' ').slice(1).join(' ');
+	  if(!newname) return message.channel.send("TEST");
+         if(newname) return message.channel.setName(newname);
+      }
+	
 });
 
 client.login(process.env.ELITE_TOKEN);
