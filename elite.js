@@ -68,8 +68,13 @@ client.on("message", (message) => {
                 READ_MESSAGES: true
 
             }); 
-	  ticketx.setName("test");
 			  
+      if (message.content.startsWith("-rename")) {
+         let newname = message.content.split(' ').slice(1).join(' ');
+	  if(!newname) return message.channel.send("TEST");
+         if(newname) return ticketx.setName(newname);
+      }
+		
 	    const d1 = new Discord.RichEmbed()
      .setDescription(`:white_check_mark: Your ticket has been created <#${ticketx.id}>`)  
      .setColor("22BF41")
@@ -84,6 +89,9 @@ client.on("message", (message) => {
             });
         }).catch(console.error);
    }
+	
+  if (message.content.startsWith("-rename")) {
+          
  
  
   if (message.content.startsWith("-close")) {
