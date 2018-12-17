@@ -85,6 +85,10 @@ client.on("message", (message) => {
  
  
   if (message.content.startsWith("-close")) {
+	              	   const d11xxx = new Discord.RichEmbed()
+     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called `\`\`Elite Team ♪..\`\`` to yourself.")  
+     .setColor("1CE143");
+	  if(!message.member.hasRole("Elite Tickets ♪..")) return message.channel.send(d11xxx);
 	   	   const d1x = new Discord.RichEmbed()
      .setDescription(`:x: Please only run this command in a ticket channel!`)  
      .setColor("1CE143")
