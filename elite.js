@@ -136,9 +136,7 @@ client.on("message", (message) => {
      .setColor("22BF41");
 	  if(!newname) return message.channel.send(usageof);
 		
-		
-	if (message.channel.name.startsWith(`${newname}-` + ticketnumber)) {	
-	return message.channel.setName(`${newname}-` + ticketnumber);
+	message.channel.setName(`${newname}-` + ticketnumber);
 		
 		const renamed = new Discord.RichEmbed()
      .setDescription(`:white_check_mark: The channel has been renamed to ` + `\`\`${newname}\`\``)  
@@ -146,7 +144,27 @@ client.on("message", (message) => {
 		
          message.channel.send(renamed);
 	
-	}
+         
+      }
+
+	if (message.content.startsWith("-reset")) {
+	let ticketnumber = message.author.discriminator;
+		              	   const d11x1xx = new Discord.RichEmbed()
+     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`Elite Team ♪..\`\` to yourself.")  
+     .setColor("22BF41");
+	  if(!message.member.roles.find("name", "Elite Team ♪..")) return message.channel.send(d11x1xx);
+	   	   const d1dx = new Discord.RichEmbed()
+     .setDescription(`:x: Please only run this command in a ticket channel!`)  
+     .setColor("22BF41")
+		
+	message.channel.setName(`ticket-` + ticketnumber);
+		
+		const reseted = new Discord.RichEmbed()
+     .setDescription(`:white_check_mark: The channel has been reseted`)  
+     .setColor("22BF41");
+		
+         message.channel.send(reseted);
+	
          
       }
 	
