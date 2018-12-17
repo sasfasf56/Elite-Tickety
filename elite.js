@@ -72,7 +72,7 @@ client.on("message", (message) => {
      .setColor("22BF41")
             message.channel.send(d1);
             const nonedear = new Discord.RichEmbed()
-     .setDescription(`Dear ${message.author}, \n\nThank you for reaching out to our support team!\n\nWe will get back to you as soon as possible\n`) 
+     .setDescription(`Dear ${message.author}, \n\nThank you for reaching out to our support team!\n\nWe will get back to you as soon as possible\n\n`) 
      .setColor("22BF41")
      .setFooter(`Elite Tickety v1.0` , client.user.avatarURL)
      .setTimestamp();
@@ -92,10 +92,10 @@ client.on("message", (message) => {
      .setDescription(`:x: Please only run this command in a ticket channel!`)  
      .setColor("22BF41")
         if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(d1x);
-            	   const d11 = new Discord.RichEmbed()
+            	   const d1152354525 = new Discord.RichEmbed()
      .setDescription(`Are you sure you want to close this ticket? The channel will be deleted.\n**Repeat the command to close the ticket.**\nYour request will be voided in 20 seconds.`)  
      .setColor("22BF41");
-        message.channel.send(d11)
+        message.channel.send(d1152354525)
             .then((m) => {
                 message.channel.awaitMessages(response => response.content === '-close', {
                         max: 1,
@@ -103,6 +103,7 @@ client.on("message", (message) => {
                         errors: ['time'],
                     }) 
                     .then((collected) => {
+                        message.delete();
                         message.channel.delete();
                     })  
                     .catch(() => {
