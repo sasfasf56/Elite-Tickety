@@ -29,7 +29,7 @@ console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
 console.log(`Logged in as  * [ "  Team #Elite© " ] servers! [ " ${client.guilds.size} " ] Users! [ " ${client.users.size} " ]`);
 	
 client.user.setStatus("dnd");
-client.user.setGame(`Elite Community  ♪..`,'https://www.twitch.tv/Elite-Community');	
+client.user.setGame(`Elite Server ♪..`,'https://www.twitch.tv/Elite-Server');	
 
 });
 
@@ -107,8 +107,8 @@ client.on("message", (message) => {
                         errors: ['time'],
                     }) 
                     .then((collected) => {
-                        message.delete();
-			message.delete(4000);
+                        m.delete();
+			m.delete(4000);
                         message.channel.delete();
                     })  
                     .catch(() => {
