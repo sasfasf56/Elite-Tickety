@@ -55,7 +55,7 @@ client.on("message", (message) => {
 	   
         message.guild.createChannel(`ticket-${ticketnumber}`, "text").then(ticketx => {
 	    ticketx.setParent(elite);
-            elite.setPosition("1");
+            elite.setPosition(1);
             let role = message.guild.roles.find("name", "Elite Team ♪..");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
