@@ -154,9 +154,10 @@ client.on("message", (message) => {
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`Elite Team ♪..\`\` to yourself.")  
      .setColor("22BF41");
 	  if(!message.member.roles.find("name", "Elite Team ♪..")) return message.channel.send(d11x1xx);
-	   	   const d1dx = new Discord.RichEmbed()
+	   	  	   const d1dx1reset = new Discord.RichEmbed()
      .setDescription(`:x: Please only run this command in a ticket channel!`)  
      .setColor("22BF41")
+	if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(d1dx1reset);
 		
 	message.channel.setName(`ticket-` + ticketnumber);
 		
