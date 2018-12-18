@@ -29,7 +29,7 @@ console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~');
 console.log(`Logged in as  * [ "  Team #Elite© " ] servers! [ " ${client.guilds.size} " ] Users! [ " ${client.users.size} " ]`);
 	
 client.user.setStatus("dnd");
-client.user.setGame(`Elite Server ♪..`,'https://www.twitch.tv/Elite-Server');	
+client.user.setGame(`● Élite Server ,,, 1K ..`,'https://www.twitch.tv/Elite-Server');	
 
 });
 
