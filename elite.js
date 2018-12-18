@@ -38,11 +38,11 @@ client.on("message", (message) => {
          let newname = message.content.split(' ').slice(1).join(' ');
    if (message.content.startsWith("-new")) {
 	let ticketnumber = message.author.discriminator;
-	let elite = message.guild.channels.find("name", "Elite Tickets ♪..");
+	let elite = message.guild.channels.find("name", "● Élite » Tickets");
 			     const rerole = new Discord.RichEmbed()
-     .setDescription(":x: Please first make a role called exactly \`\`Elite Team ♪..\`\`")  
+     .setDescription(":x: Please first make a role called exactly \`\`● Élite » Team\`\`")  
      .setColor("22BF41");		    
-        if (!message.guild.roles.exists("name", "Elite Team ♪..")) return message.channel.send(rerole);
+        if (!message.guild.roles.exists("name", "● Élite » Team")) return message.channel.send(rerole);
 	          const already = new Discord.RichEmbed()
      .setDescription(":x: You can only have \`\`1\`\` ticket in this server! you already have \`\`1\`\`")  
      .setColor("22BF41");
@@ -50,13 +50,13 @@ client.on("message", (message) => {
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
 	   
 	   if(!elite) {
-                message.guild.createChannel("Elite Tickets ♪..", "category");
+                message.guild.createChannel("● Élite » Tickets", "category");
 		elite.setPosition(1);
             };
 	   
         message.guild.createChannel(`ticket-${ticketnumber}`, "text").then(ticketx => {
 	    ticketx.setParent(elite);
-            let role = message.guild.roles.find("name", "Elite Team ♪..");
+            let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
                 SEND_MESSAGES: true,
@@ -89,9 +89,9 @@ client.on("message", (message) => {
 	  
   if (message.content.startsWith("-close")) {
 	              	   const d11xxx = new Discord.RichEmbed()
-     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`Elite Team ♪..\`\` to yourself.")  
+     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
      .setColor("22BF41");
-	  if(!message.member.roles.find("name", "Elite Team ♪..")) return message.channel.send(d11xxx);
+	  if(!message.member.roles.find("name", "● Élite » Team")) return message.channel.send(d11xxx);
 	   	   const d1x = new Discord.RichEmbed()
      .setDescription(`:x: Please only run this command in a ticket channel!`)  
      .setColor("22BF41")
@@ -124,9 +124,9 @@ client.on("message", (message) => {
 	if (message.content.startsWith("-rename")) {
 	let ticketnumber = message.author.discriminator;
 		              	   const d11x1xx = new Discord.RichEmbed()
-     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`Elite Team ♪..\`\` to yourself.")  
+     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
      .setColor("22BF41");
-	  if(!message.member.roles.find("name", "Elite Team ♪..")) return message.channel.send(d11x1xx);
+	  if(!message.member.roles.find("name", "● Élite » Team")) return message.channel.send(d11x1xx);
 	   	   const d1dx = new Discord.RichEmbed()
      .setDescription(`:x: Please only run this command in a ticket channel!`)  
      .setColor("22BF41")
@@ -150,9 +150,9 @@ client.on("message", (message) => {
 	if (message.content.startsWith("-reset")) {
 	let ticketnumber = message.author.discriminator;
 		              	   const d11x1xx = new Discord.RichEmbed()
-     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`Elite Team ♪..\`\` to yourself.")  
+     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
      .setColor("22BF41");
-	  if(!message.member.roles.find("name", "Elite Team ♪..")) return message.channel.send(d11x1xx);
+	  if(!message.member.roles.find("name", "● Élite » Team")) return message.channel.send(d11x1xx);
 	   	  	   const d1dx1reset = new Discord.RichEmbed()
      .setDescription(`:x: Please only run this command in a ticket channel!`)  
      .setColor("22BF41")
