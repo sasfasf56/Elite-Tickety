@@ -48,15 +48,16 @@ client.on("message", (message) => {
      .setColor("22BF41");
         if (message.guild.channels.exists("name", "ticket-" + ticketnumber)) return message.channel.send(already);  
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
+	   
 	   if(!elite) {
                 message.guild.createChannel("Elite Tickets ♪..", "category");
             };
 	   
         message.guild.createChannel(`ticket-${ticketnumber}`, "text").then(ticketx => {
+	    ticketx.setParent(elite);
+            elite.setPosition("1");
             let role = message.guild.roles.find("name", "Elite Team ♪..");
             let role2 = message.guild.roles.find("name", "@everyone");
-		  ticketx.setParent(elite);
-                  elite.setPosition(1);
             ticketx.overwritePermissions(role, {
                 SEND_MESSAGES: true,
                 READ_MESSAGES: true
