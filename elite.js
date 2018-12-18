@@ -101,7 +101,6 @@ client.on("message", (message) => {
      .setColor("22BF41");
         message.channel.send(d1152354525)
             .then((m) => {
-                const filter = msg => msg.content.startsWith('-close');
                 message.channel.awaitMessages(response => response.content === '-close', {
                         max: 1,
                         time: 20000,
