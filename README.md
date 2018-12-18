@@ -1,2 +1,2 @@
 # Elite-Tickety
-Elite Community &lt;3...,
+Elite Server &lt;3...,
