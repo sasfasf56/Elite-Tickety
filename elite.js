@@ -38,13 +38,13 @@ client.user.setGame(`● Élite Server ,,, 1K ..`,'https://www.twitch.tv/Elite-S
  
 client.on("message", (message) => {
          let newname = message.content.split(' ').slice(1).join(' ');
-	 let args = message.content.split(' ').slice(1).join(' ');
+	 let subject = message.content.split(' ').slice(1).join(' ');
    if (message.content.startsWith("-new")) {
-	  let elite = message.guild.channels.find("name", "● Élite » Tickets");
+	   if(!subject[0]){
+		   	  let elite = message.guild.channels.find("name", "● Élite » Tickets");
 	   if(!elite) {
                 message.guild.createChannel("● Élite » Tickets", "category");
             }
-	   if(!args[0]){
             read._number++;
             fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
 			     const rerole = new Discord.RichEmbed()
@@ -92,7 +92,11 @@ client.on("message", (message) => {
    }
    }
 	
-     if(args[0]){
+     if(subject[0]){
+	     	  let elite = message.guild.channels.find("name", "● Élite » Tickets");
+	   if(!elite) {
+                message.guild.createChannel("● Élite » Tickets", "category");
+            }
 	    read._number++;
             fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
 			     const rerole = new Discord.RichEmbed()
@@ -128,7 +132,7 @@ client.on("message", (message) => {
             message.channel.send(d1);
             const nonedear = new Discord.RichEmbed()
      .setDescription(`Dear ${message.author}, \n\nThank you for reaching out to our support team!\n\nWe will get back to you as soon as possible\n\n`) 
-     .addField('Subject' , args)
+     .addField('Subject' , subject)
      .setColor("22BF41")
      .setFooter(`Elite Tickety v1.0` , client.user.avatarURL)
      .setTimestamp();
