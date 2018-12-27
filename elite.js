@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const read = require('./Data/tickets.json')
 const client = new Discord.Client({disableEveryone: true});
 const prefix = "e#";
+const fs = require('fs')
 
 
 client.on('ready',  () => {
