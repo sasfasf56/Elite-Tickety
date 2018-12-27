@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const read = require('../Data/tickets.json')
 const client = new Discord.Client({disableEveryone: true});
 const prefix = "e#";
 
@@ -37,10 +38,15 @@ client.user.setGame(`● Élite Server ,,, 1K ..`,'https://www.twitch.tv/Elite-S
 client.on("message", (message) => {
          let newname = message.content.split(' ').slice(1).join(' ');
 	 let args = message.content.split(' ').slice(1).join(' ');
+	 let elite = message.guild.channels.find("name", "● Élite » Tickets");
+	   if(!elite) {
+                message.guild.createChannel("● Élite » Tickets", "category");
+		elite.setPosition(1);
+            };
    if (message.content.startsWith("-new")) {
 	   if(!args[0]){
-	let ticketnumber = message.author.discriminator;
-	let elite = message.guild.channels.find("name", "● Élite » Tickets");
+            read._number++;
+            fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
 			     const rerole = new Discord.RichEmbed()
      .setDescription(":x: Please first make a role called exactly \`\`● Élite » Team\`\`")  
      .setColor("22BF41");		    
@@ -48,15 +54,10 @@ client.on("message", (message) => {
 	          const already = new Discord.RichEmbed()
      .setDescription(":x: You can only have \`\`1\`\` ticket in this server! you already have \`\`1\`\`")  
      .setColor("22BF41");
-        if (message.guild.channels.exists("name", "ticket-" + ticketnumber)) return message.channel.send(already);  
+        if (message.guild.channels.exists("name", "ticket-${read._number.toString()}")) return message.channel.send(already);  
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
 	   
-	   if(!elite) {
-                message.guild.createChannel("● Élite » Tickets", "category");
-		elite.setPosition(1);
-            };
-	   
-        message.guild.createChannel(`ticket-${ticketnumber}`, "text").then(ticketx => {
+        message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
 	    ticketx.setParent(elite);
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
@@ -92,8 +93,8 @@ client.on("message", (message) => {
    }
 	
      if(args[0]){
-	let ticketnumber = message.author.discriminator;
-	let elite = message.guild.channels.find("name", "● Élite » Tickets");
+	    read._number++;
+            fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
 			     const rerole = new Discord.RichEmbed()
      .setDescription(":x: Please first make a role called exactly \`\`● Élite » Team\`\`")  
      .setColor("22BF41");		    
@@ -101,15 +102,9 @@ client.on("message", (message) => {
 	          const already = new Discord.RichEmbed()
      .setDescription(":x: You can only have \`\`1\`\` ticket in this server! you already have \`\`1\`\`")  
      .setColor("22BF41");
-        if (message.guild.channels.exists("name", "ticket-" + ticketnumber)) return message.channel.send(already);  
+        if (message.guild.channels.exists("name", "ticket-${read._number.toString()}")) return message.channel.send(already);  
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
-	   
-	   if(!elite) {
-                message.guild.createChannel("● Élite » Tickets", "category");
-		elite.setPosition(1);
-            };
-	   
-        message.guild.createChannel(`ticket-${ticketnumber}`, "text").then(ticketx => {
+        message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
 	    ticketx.setParent(elite);
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
@@ -179,7 +174,6 @@ client.on("message", (message) => {
     }
  
 	if (message.content.startsWith("-rename")) {
-	let ticketnumber = message.author.discriminator;
 		              	   const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
      .setColor("22BF41");
@@ -203,29 +197,6 @@ client.on("message", (message) => {
 	
          
       }
-
-	if (message.content.startsWith("-reset")) {
-	let ticketnumber = message.author.discriminator;
-		              	   const d11x1xx = new Discord.RichEmbed()
-     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
-     .setColor("22BF41");
-	  if(!message.member.roles.find("name", "● Élite » Team")) return message.channel.send(d11x1xx);
-	   	  	   const d1dx1reset = new Discord.RichEmbed()
-     .setDescription(`:x: Please only run this command in a ticket channel!`)  
-     .setColor("22BF41")
-	if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(d1dx1reset);
-		
-	message.channel.setName(`ticket-` + ticketnumber);
-		
-		const reseted = new Discord.RichEmbed()
-     .setDescription(`:white_check_mark: The channel has been reseted`)  
-     .setColor("22BF41");
-		
-         message.channel.send(reseted);
-	
-         
-      }
-	
 });
 
 client.login(process.env.ELITE_TOKEN);
