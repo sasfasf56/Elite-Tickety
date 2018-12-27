@@ -44,7 +44,7 @@ client.on("message", (message) => {
 	   if(!elite) {
                 message.guild.createChannel("● Élite » Tickets", "category");
 		elite.setPosition(1);
-            };
+            }
 	   if(!args[0]){
             read._number++;
             fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
