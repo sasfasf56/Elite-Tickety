@@ -41,7 +41,7 @@ client.on("message", (message) => {
 	 let elite = message.guild.channels.find("name", "● Élite » Tickets");
 	   if(!elite) {
                 message.guild.createChannel("● Élite » Tickets", "category");
-		elite.setPosition(1);
+		elite.setPosition(0);
             };
    if (message.content.startsWith("-new")) {
 	   if(!args[0]){
