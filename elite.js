@@ -39,12 +39,12 @@ client.user.setGame(`● Élite Server ,,, 1K ..`,'https://www.twitch.tv/Elite-S
 client.on("message", (message) => {
          let newname = message.content.split(' ').slice(1).join(' ');
 	 let args = message.content.split(' ').slice(1).join(' ');
-	 let elite = message.guild.channels.find("name", "● Élite » Tickets");
+   if (message.content.startsWith("-new")) {
+	  let elite = message.guild.channels.find("name", "● Élite » Tickets");
 	   if(!elite) {
                 message.guild.createChannel("● Élite » Tickets", "category");
-		elite.setPosition(0);
+		elite.setPosition(1);
             };
-   if (message.content.startsWith("-new")) {
 	   if(!args[0]){
             read._number++;
             fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
