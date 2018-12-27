@@ -84,7 +84,7 @@ client.on("message", (message) => {
      .setDescription(`Dear ${message.author}, \n\nThank you for reaching out to our support team!\n\nWe will get back to you as soon as possible\n\n`) 
      .addField('Subject' , `No subject has been given`)
      .setColor("22BF41")
-     .setFooter(`Elite Tickety v1.0` , client.user.avatarURL)
+     .setFooter(`Elite Tickety v1.0 || By Sw3rD#0010` , client.user.avatarURL)
      .setTimestamp();
             ticketx.send({
                 embed: nonedear
@@ -130,7 +130,7 @@ client.on("message", (message) => {
      .setDescription(`Dear ${message.author}, \n\nThank you for reaching out to our support team!\n\nWe will get back to you as soon as possible\n\n`) 
      .addField('Subject' , subject)
      .setColor("22BF41")
-     .setFooter(`Elite Tickety v1.0` , client.user.avatarURL)
+     .setFooter(`Elite Tickety v1.0 || By Sw3rD#0010` , client.user.avatarURL)
      .setTimestamp();
             ticketx.send({
                 embed: nonedear
