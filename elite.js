@@ -54,12 +54,8 @@ client.on("message", (message) => {
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
 	   
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
-           let elite = message.guild.channels.find("name", "● Élite » Tickets");
-	   if(!elite) {
-                message.guild.createChannel("● Élite » Tickets", "category");
-		elite.setPostition(1);
-		ticketx.setParent(elite);
-            }
+			              let elite = message.guild.channels.find("name", "● Élite » Tickets");
+		if(!elite) return message.guild.createChannel(`● Élite » Tickets` , "catgory").then(ticketx.setParent(elite));
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
