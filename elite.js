@@ -36,7 +36,9 @@ client.user.setGame(`● Élite Server ,,, 1K ..`,'https://www.twitch.tv/Elite-S
  
 client.on("message", (message) => {
          let newname = message.content.split(' ').slice(1).join(' ');
+	 let args = message.content.split(' ').slice(1).join(' ');
    if (message.content.startsWith("-new")) {
+	   if(!args[0]){
 	let ticketnumber = message.author.discriminator;
 	let elite = message.guild.channels.find("name", "● Élite » Tickets");
 			     const rerole = new Discord.RichEmbed()
@@ -78,6 +80,7 @@ client.on("message", (message) => {
             message.channel.send(d1);
             const nonedear = new Discord.RichEmbed()
      .setDescription(`Dear ${message.author}, \n\nThank you for reaching out to our support team!\n\nWe will get back to you as soon as possible\n\n`) 
+     .addField('Subject' , `No subject has been given`)
      .setColor("22BF41")
      .setFooter(`Elite Tickety v1.0` , client.user.avatarURL)
      .setTimestamp();
@@ -86,6 +89,60 @@ client.on("message", (message) => {
             });
         }).catch(console.error);
    }
+   }
+	
+     if(args[0]){
+	let ticketnumber = message.author.discriminator;
+	let elite = message.guild.channels.find("name", "● Élite » Tickets");
+			     const rerole = new Discord.RichEmbed()
+     .setDescription(":x: Please first make a role called exactly \`\`● Élite » Team\`\`")  
+     .setColor("22BF41");		    
+        if (!message.guild.roles.exists("name", "● Élite » Team")) return message.channel.send(rerole);
+	          const already = new Discord.RichEmbed()
+     .setDescription(":x: You can only have \`\`1\`\` ticket in this server! you already have \`\`1\`\`")  
+     .setColor("22BF41");
+        if (message.guild.channels.exists("name", "ticket-" + ticketnumber)) return message.channel.send(already);  
+	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
+	   
+	   if(!elite) {
+                message.guild.createChannel("● Élite » Tickets", "category");
+		elite.setPosition(1);
+            };
+	   
+        message.guild.createChannel(`ticket-${ticketnumber}`, "text").then(ticketx => {
+	    ticketx.setParent(elite);
+            let role = message.guild.roles.find("name", "● Élite » Team");
+            let role2 = message.guild.roles.find("name", "@everyone");
+            ticketx.overwritePermissions(role, {
+                SEND_MESSAGES: true,
+                READ_MESSAGES: true
+            });   
+            ticketx.overwritePermissions(role2, {
+                SEND_MESSAGES: false,
+                READ_MESSAGES: false
+            });
+            ticketx.overwritePermissions(message.author, {
+                SEND_MESSAGES: true,
+                READ_MESSAGES: true
+
+            }); 
+		
+	    const d1 = new Discord.RichEmbed()
+     .setDescription(`:white_check_mark: Your ticket has been created <#${ticketx.id}>`)  
+     .setColor("22BF41")
+            message.channel.send(d1);
+            const nonedear = new Discord.RichEmbed()
+     .setDescription(`Dear ${message.author}, \n\nThank you for reaching out to our support team!\n\nWe will get back to you as soon as possible\n\n`) 
+     .addField('Subject' , args)
+     .setColor("22BF41")
+     .setFooter(`Elite Tickety v1.0` , client.user.avatarURL)
+     .setTimestamp();
+            ticketx.send({
+                embed: nonedear
+            });
+        }).catch(console.error);
+   }
+
 	  
   if (message.content.startsWith("-close")) {
 	              	   const d11xxx = new Discord.RichEmbed()
