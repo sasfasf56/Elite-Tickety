@@ -40,6 +40,11 @@ client.on("message", (message) => {
          let newname = message.content.split(' ').slice(1).join(' ');
 	 let subject = message.content.split(' ').slice(1).join(' ');
    if (message.content.startsWith("-new")) {
+	   	     	   let elite = message.guild.channels.find("name", "● Élite » Tickets");
+	 const recategory = new Discord.RichEmbed()
+     .setDescription(":x: Please first make a category called exactly \`\`● Élite » Tickets\`\`")  
+     .setColor("22BF41");		    
+     if(!elite) return message.channel.send(recategory);
 	   if(!subject[0]){
             read._number++;
             fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
@@ -54,8 +59,7 @@ client.on("message", (message) => {
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
 	   
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
-			              let elite = message.guild.channels.find("name", "● Élite » Tickets");
-		if(!elite) return message.guild.createChannel("● Élite » Tickets", "category").then(ticketx.setParent(elite));
+		ticketx.setParent(elite);
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
@@ -87,7 +91,6 @@ client.on("message", (message) => {
             });
         }).catch(console.error);
    }
-   }
 	
      if(subject[0]){
 	    read._number++;
@@ -102,11 +105,7 @@ client.on("message", (message) => {
         if (message.guild.channels.exists("name", "ticket-${read._number.toString()}")) return message.channel.send(already);  
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
-           let elite = message.guild.channels.find("name", "● Élite » Tickets");
-	   if(!elite) {
-                message.guild.createChannel("● Élite » Tickets", "category");
-		ticketx.setParent(elite);
-            }
+          ticketx.setParent(elite);
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
@@ -138,7 +137,7 @@ client.on("message", (message) => {
             });
         }).catch(console.error);
    }
-
+   }
 	  
   if (message.content.startsWith("-close")) {
 	              	   const d11xxx = new Discord.RichEmbed()
