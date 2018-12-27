@@ -57,6 +57,7 @@ client.on("message", (message) => {
            let elite = message.guild.channels.find("name", "● Élite » Tickets");
 	   if(!elite) {
                 message.guild.createChannel("● Élite » Tickets", "category");
+		elite.setPostition(1);
 		ticketx.setParent(elite);
             }
             let role = message.guild.roles.find("name", "● Élite » Team");
