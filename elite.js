@@ -40,8 +40,8 @@ client.on("message", (message) => {
 	
          let newname = message.content.split(' ').slice(1).join(' ');
 	 let subject = message.content.split(' ').slice(1).join(' ');
-	    if (message.content.startsWith("-setcategory")) {
-		let Category = message.content.split(' ').slice(1).join(' ');
+         let Category = message.content.split(' ').slice(1).join(' ');
+	 if (message.content.startsWith("-setcategory")) {
 		    const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
      .setColor("22BF41");
@@ -60,7 +60,7 @@ client.on("message", (message) => {
      .setColor("22BF41");
 		    
 		    message.channel.send(D1);
-		    
+	    }
 		    
    if (message.content.startsWith("-new")) {
 	  let Not = message.guild.channels.find(`name` , Category);
@@ -251,10 +251,8 @@ client.on("message", (message) => {
                 embed: nonedear
             });
         }).catch(console.error);
-   }	  
-	  });
-	  
-client.on("message", (message) => {
+   }
+     }
 
   if (message.content.startsWith("-close")) {
 	              	   const d11xxx = new Discord.RichEmbed()
