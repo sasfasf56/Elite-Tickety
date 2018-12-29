@@ -251,9 +251,7 @@ client.on("message", (message) => {
                 embed: nonedear
             });
         }).catch(console.error);
-   }
-}
-	  
+   }	  
 	  });
 	  
 client.on("message", (message) => {
