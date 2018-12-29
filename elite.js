@@ -39,9 +39,9 @@ client.user.setGame(`● Élite Server ,,, 1K ..`,'https://www.twitch.tv/Elite-S
 client.on("message", (message) => {
          let newname = message.content.split(' ').slice(1).join(' ');
 	 let subject = message.content.split(' ').slice(1).join(' ');
-         let Category = message.content.split(' ').slice(1).join(' ')
+	 let Category = message.content.split(' ').slice(1).join(' ')
 	    if (message.content.startsWith("-setcategory")) {
-		    		              	   const d11x1xx = new Discord.RichEmbed()
+		    const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
      .setColor("22BF41");
 	  if(!message.member.roles.find("name", "● Élite » Team")) return message.channel.send(d11x1xx);
@@ -63,6 +63,7 @@ client.on("message", (message) => {
 		    
 	    }
    if (message.content.startsWith("-new")) {
+	   
 	   if(!subject[0]){
 		   if(!Category){
             read._number++;
@@ -109,7 +110,7 @@ client.on("message", (message) => {
             });
         }).catch(console.error);
    }
-	   
+	   }
 	   
   if(Category){
             read._number++;
@@ -204,7 +205,7 @@ client.on("message", (message) => {
             });
         }).catch(console.error);
    }
-     
+     }
 	     
    if(Category){
 	    read._number++;
@@ -251,8 +252,12 @@ client.on("message", (message) => {
             });
         }).catch(console.error);
    }
-     
+}
 	  
+	  });
+	  
+client.on("message", (message) => {
+
   if (message.content.startsWith("-close")) {
 	              	   const d11xxx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
@@ -311,6 +316,6 @@ client.on("message", (message) => {
 	
          
 	}
-	            });
+	   });
 
 client.login(process.env.ELITE_TOKEN);
