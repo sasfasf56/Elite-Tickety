@@ -37,6 +37,7 @@ client.user.setGame(`● Élite Server ,,, 1K ..`,'https://www.twitch.tv/Elite-S
 
  
 client.on("message", (message) => {
+	
          let newname = message.content.split(' ').slice(1).join(' ');
 	 let subject = message.content.split(' ').slice(1).join(' ');
 	 let Category = message.content.split(' ').slice(1).join(' ');
@@ -48,7 +49,7 @@ client.on("message", (message) => {
       const NOT = new Discord.RichEmbed()
      .setDescription(`:x: Usage: \`\`-setcategory <name>\`\``)  
      .setColor("22BF41");	
-		    if(!Category) return message.channel.send(NOT);
+	if(!Category) return message.channel.send(NOT);
 		    	 const recategory = new Discord.RichEmbed()
      .setDescription(`:x: I can't find a category called exactly \`\`${Category}\`\``)  
      .setColor("22BF41");	
@@ -62,8 +63,8 @@ client.on("message", (message) => {
 		    
 		    
 	    }
-   if (message.content.startsWith("-new")) {
    let Not = message.guild.channels.find(`name` , Category);
+   if (message.content.startsWith("-new")) {
 	   if(!subject[0]){
 	  if(!Not){
             read._number++;
@@ -204,10 +205,10 @@ if(Not){
                 embed: nonedear
             });
         }).catch(console.error);
-   }
-     }
+	     }
+     
 	     
-   if(Not){
+  if(Not){
 	    read._number++;
             fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
 			     const rerole = new Discord.RichEmbed()
