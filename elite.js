@@ -109,6 +109,7 @@ client.on("message", (message) => {
             });
         }).catch(console.error);
    }
+	   }
 	   
   if(Category){
             read._number++;
@@ -156,6 +157,7 @@ client.on("message", (message) => {
             });
         }).catch(console.error);
    }
+	   }
 		   
      if(subject[0]){
 	     if(!Category){
@@ -202,6 +204,7 @@ client.on("message", (message) => {
             });
         }).catch(console.error);
    }
+     }
 	     
    if(Category){
 	    read._number++;
@@ -248,6 +251,7 @@ client.on("message", (message) => {
             });
         }).catch(console.error);
    }
+     
 	  
   if (message.content.startsWith("-close")) {
 	              	   const d11xxx = new Discord.RichEmbed()
@@ -281,7 +285,7 @@ client.on("message", (message) => {
                         }, 3000);
                     });
             });
-    }
+}
  
 	if (message.content.startsWith("-rename")) {
 		              	   const d11x1xx = new Discord.RichEmbed()
@@ -306,7 +310,7 @@ client.on("message", (message) => {
          message.channel.send(renamed);
 	
          
-      }
-});
+	}
+	            });
 
 client.login(process.env.ELITE_TOKEN);
