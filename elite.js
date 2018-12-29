@@ -253,7 +253,6 @@ client.on("message", (message) => {
         }).catch(console.error);
    }	  
      }
-   }
 	  });
 	  
 client.on("message", (message) => {
