@@ -109,7 +109,7 @@ client.on("message", (message) => {
             });
         }).catch(console.error);
    }
-	   }
+	   
 	   
   if(Category){
             read._number++;
@@ -204,7 +204,7 @@ client.on("message", (message) => {
             });
         }).catch(console.error);
    }
-     }
+     
 	     
    if(Category){
 	    read._number++;
