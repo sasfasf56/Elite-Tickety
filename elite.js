@@ -40,8 +40,8 @@ client.on("message", (message) => {
 	
          let newname = message.content.split(' ').slice(1).join(' ');
 	 let subject = message.content.split(' ').slice(1).join(' ');
-	 let Category = message.content.split(' ').slice(1).join(' ');
 	    if (message.content.startsWith("-setcategory")) {
+		let Category = message.content.split(' ').slice(1).join(' ');
 		    const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
      .setColor("22BF41");
@@ -62,9 +62,8 @@ client.on("message", (message) => {
 		    message.channel.send(D1);
 		    
 		    
-	    }
-   let Not = message.guild.channels.find(`name` , Category);
    if (message.content.startsWith("-new")) {
+	  let Not = message.guild.channels.find(`name` , Category);
 	   if(!subject[0]){
 	  if(!Not){
             read._number++;
@@ -110,10 +109,10 @@ client.on("message", (message) => {
                 embed: nonedear
             });
         }).catch(console.error);
-   }
-	   }
 
-if(Not){   
+	  }
+
+    if(Not){   
           read._number++;
             fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
 			     const rerole = new Discord.RichEmbed()
@@ -254,6 +253,7 @@ if(Not){
         }).catch(console.error);
    }	  
      }
+   }
 	  });
 	  
 client.on("message", (message) => {
