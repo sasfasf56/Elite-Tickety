@@ -66,26 +66,25 @@ room: Category,
 fs.writeFile("./categrays.json", JSON.stringify(gory) ,(err) =>{
   if (err) console.log(err.message);
 });
+}
 }})
 
  
 client.on("message", (message) => {
-	let newname = message.content.split(' ').slice(1).join(' ');
-	let subject = message.content.split(' ').slice(1).join(' '); 
-  if (message.content.toLowerCase().startsWith(prefix + `new`)) {
-	  	       const nos = new Discord.RichEmbed()
+	 const nos = new Discord.RichEmbed()
      .setDescription(`:x: This command only for servers`)
      .setColor("22BF41");
   if(!message.channel.guild) return message.channel.send(nos).then(m => m.delete(5000));
-	  
-	     function clean(text) {
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
+	function clean(text) {
     if (typeof(text) === "string")
       return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
     else
         return text;
   }
-	 if (!message.content.startsWith(prefix) || message.author.bot) return;
-	   if(!subject){
+  if (message.content.toLowerCase().startsWith(prefix + `new`)) {
+	 let subject = message.content.split(' ').slice(1).join(' '); 
+	  if(!subject){
             read._number++;
             fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
 			     const rerole = new Discord.RichEmbed()
@@ -221,6 +220,7 @@ client.on("message", (message) => {
   }
 
   if (message.content.toLowerCase().startsWith(prefix + `rename`)) {
+	let newname = message.content.split(' ').slice(1).join(' ');
 	  	       const nos = new Discord.RichEmbed()
      .setDescription(`:x: This command only for servers`)
      .setColor("22BF41");
