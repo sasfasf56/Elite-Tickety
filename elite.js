@@ -76,7 +76,6 @@ client.on("message", (message) => {
         if (message.guild.channels.exists("name", "ticket-${read._number.toString()}")) return message.channel.send(already);  
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
-               ticketx.setParent(Elite);
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
@@ -125,7 +124,6 @@ client.on("message", (message) => {
         if (message.guild.channels.exists("name", "ticket-${read._number.toString()}")) return message.channel.send(already);  
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
-               ticketx.setParent(Elite);
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
