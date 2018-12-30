@@ -3,7 +3,7 @@ const read = require('./Data/tickets.json')
 const client = new Discord.Client({disableEveryone: true});
 const prefix = "-";
 const fs = require('fs')
-let CateWP = JSON.parse(fs.readFileSync('./Data/categories.json' , 'utf8'));
+const CateWP = JSON.parse(fs.readFileSync('./Data/categories.json' , 'utf8'));
 
 
 client.on('ready',  () => {
@@ -94,7 +94,7 @@ client.on("message", (message) => {
         if (message.channel.name.startsWith("ticket-" + read._number.toString())) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
 		   if(CateWP[message.guild.id].room) {
-        const EliteX = message.guild.channels.find(`${CateWP[message.guild.id].room.id}`);
+        let EliteX = message.guild.channels.find(`${CateWP[message.guild.id].room.id}`);
         ticketx.setParent(EliteX);
   
       }
