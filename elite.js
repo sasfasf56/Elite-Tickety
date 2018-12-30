@@ -52,19 +52,12 @@ client.on("message", (message) => {
      .setDescription(`:x: I can't find a category called exactly \`\`${Category1}\`\``)  
      .setColor("22BF41");	
       if(!Elite) return message.channel.send(recategory);
-		 
-		 		    	 const recategory1 = new Discord.RichEmbed()
-     .setDescription(`:x: This is not a category \`\`${Category1}\`\``)  
-     .setColor("22BF41");	
-	    if(message.guild.channels.filter(m => m.type !== 'category')) return message.channel.send(recategory1);
-			    if(message.guild.channels.filter(m => m.type === 'category')){
 		     const D15X = new Discord.RichEmbed()
      .setDescription(`:white_check_mark: The category has been set to \`\`${Category1}\`\``)  
      .setColor("22BF41");
 		    message.channel.send(D15X);
 	 }
-}
-         let newname = message.content.split(' ').slice(1).join(' ');
+	let newname = message.content.split(' ').slice(1).join(' ');
 	 let subject = message.content.split(' ').slice(1).join(' ');
    if (message.content.startsWith("-new")) {
 	   if(!subject){
