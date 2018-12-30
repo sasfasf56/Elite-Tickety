@@ -40,7 +40,7 @@ client.on("message", (message) => {
 	
          let newname = message.content.split(' ').slice(1).join(' ');
 	 let subject = message.content.split(' ').slice(1).join(' ');
-	 let Category = message.content.split(' ').slice(1).join(' ');
+	 let Category = message.content.split(' ').slice(2).join(' ');
          let Elite = message.guild.channels.find("name" , Category);
 	 if (message.content.startsWith("-setcategory") || message.content.startsWith("-setCategory")) {
 		    const d11x1xx = new Discord.RichEmbed()
@@ -62,7 +62,7 @@ client.on("message", (message) => {
 	 }
 		    
    if (message.content.startsWith("-new")) {
-	   if(!subject[0]){
+	   if(!subject){
             read._number++;
             fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
 			     const rerole = new Discord.RichEmbed()
@@ -110,7 +110,7 @@ client.on("message", (message) => {
 	  }
    }
 		   
-     if(subject[0]){
+     if(subject){
 	    read._number++;
             fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
 			     const rerole = new Discord.RichEmbed()
