@@ -36,12 +36,11 @@ client.user.setGame(`● Élite Server ,,, 1K ..`,'https://www.twitch.tv/Elite-S
 
 });
 
-
-client.on("message", (message) => {
-	let Category = message.content.split(" ").slice(1).join(" ");
-        let Elite = message.guild.channels.find('name', `${Category}`);
-      if(message.content === `${prefix}setcategory`) {
-	       const nos = new Discord.RichEmbed()
+client.on('message', message => {
+  let Category = message.content.split(" ").slice(1).join(" ")
+  let Elite = message.guild.channels.find('name', `${Category}`)
+if(message.content === `${prefix}setcategory`) {
+  const nos = new Discord.RichEmbed()
      .setDescription(`:x: This command only for servers`)
      .setColor("22BF41");
   if(!message.channel.guild) return message.channel.send(nos).then(m => m.delete(5000));
@@ -61,14 +60,13 @@ client.on("message", (message) => {
      .setDescription(`:white_check_mark: Your ticket category is now \`\`${Category}\`\``)  
      .setColor("22BF41");
 		message.channel.send(GF1);
-		   CateWP[message.guild.id] = {
-           room: Category,
-}	
-  fs.writeFile("./Data/categories.json", JSON.stringify(CateWP) ,(err) =>{
+CateWP[message.guild.id] = {
+room: Category,
+}
+fs.writeFile("./categrays.json", JSON.stringify(gory) ,(err) =>{
   if (err) console.log(err.message);
 });
-	   }
-  }})
+}})
 
  
 client.on("message", (message) => {
