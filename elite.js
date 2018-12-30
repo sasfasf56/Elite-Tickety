@@ -56,12 +56,14 @@ client.on("message", (message) => {
 		 		    	 const recategory1 = new Discord.RichEmbed()
      .setDescription(`:x: This is not a category \`\`${Category1}\`\``)  
      .setColor("22BF41");	
-	    if(!message.guild.channels.filter(m => m.type !== 'category')) return message.channel.send(recategory1);
+	    if(message.guild.channels.filter(m => m.type !== 'category')) return message.channel.send(recategory1);
+			    if(message.guild.channels.filter(m => m.type === 'category')){
 		     const D15X = new Discord.RichEmbed()
      .setDescription(`:white_check_mark: The category has been set to \`\`${Category1}\`\``)  
      .setColor("22BF41");
 		    message.channel.send(D15X);
 	 }
+}
          let newname = message.content.split(' ').slice(1).join(' ');
 	 let subject = message.content.split(' ').slice(1).join(' ');
    if (message.content.startsWith("-new")) {
@@ -78,10 +80,7 @@ client.on("message", (message) => {
         if (message.guild.channels.exists("name", `ticket-${read._number.toString()}`)) return message.channel.send(already);  
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
-		if(Elite){
-			
-			ticketx.setParent(Elite);
-		}
+             ticketx.setParent(Elite);
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
@@ -129,10 +128,7 @@ client.on("message", (message) => {
         if (message.guild.channels.exists("name", `ticket-${read._number.toString()}`)) return message.channel.send(already);  
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
-				if(Elite){
-			
-			ticketx.setParent(Elite);
-		}
+             ticketx.setParent(Elite);
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
