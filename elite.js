@@ -42,25 +42,6 @@ client.on("message", (message) => {
 	 let subject = message.content.split(' ').slice(1).join(' ');
 	 let Category = message.content.split(' ').slice(1).join(' ');
          let Elite = message.guild.channels.find("name" , Category);
-	 if (message.content.startsWith("-setcategory") || message.content.startsWith("-setCategory")) {
-		    const d11x1xx = new Discord.RichEmbed()
-     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
-     .setColor("22BF41");
-	  if(!message.member.roles.find("name", "● Élite » Team")) return message.channel.send(d11x1xx);
-      const NOT = new Discord.RichEmbed()
-     .setDescription(`:x: Usage: \`\`-setcategory <name>\`\``)  
-     .setColor("22BF41");	
-	if(!Category) return message.channel.send(NOT);
-		    	 const recategory = new Discord.RichEmbed()
-     .setDescription(`:x: I can't find a category called exactly \`\`${Category}\`\``)  
-     .setColor("22BF41");	
-      if(!Elite) return message.channel.send(recategory);
-		     const D15X = new Discord.RichEmbed()
-     .setDescription(`:white_check_mark: The category has been set to \`\`${Category}\`\``)  
-     .setColor("22BF41");
-		    message.channel.send(D15X);
-	 }
-		    
    if (message.content.startsWith("-new")) {
 	   if(!subject){
             read._number++;
@@ -100,7 +81,7 @@ client.on("message", (message) => {
      .setDescription(`Dear ${message.author}, \n\nThank you for reaching out to our support team!\n\nWe will get back to you as soon as possible\n\n`) 
      .addField('Subject' , `No subject has been given`)
      .setColor("22BF41")
-     .setFooter(`Elite Tickety v1.0 || By Sw3rD#0010` , client.user.avatarURL)
+     .setFooter(`Nice-Ti v2 || By Sw3rD#0010` , client.user.avatarURL)
      .setTimestamp();
             ticketx.send({
                 embed: nonedear
@@ -147,7 +128,7 @@ client.on("message", (message) => {
      .setDescription(`Dear ${message.author}, \n\nThank you for reaching out to our support team!\n\nWe will get back to you as soon as possible\n\n`) 
      .addField('Subject' , subject)
      .setColor("22BF41")
-     .setFooter(`Elite Tickety v1.0 || By Sw3rD#0010` , client.user.avatarURL)
+     .setFooter(`Nice-Ti v2 || By Sw3rD#0010` , client.user.avatarURL)
      .setTimestamp();
             ticketx.send({
                 embed: nonedear
@@ -213,6 +194,32 @@ client.on("message", (message) => {
 	
          
 	}
+	
+	 if (message.content.startsWith("-setcategory") || message.content.startsWith("-setCategory")) {
+		    const d11x1xx = new Discord.RichEmbed()
+     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
+     .setColor("22BF41");
+	  if(!message.member.roles.find("name", "● Élite » Team")) return message.channel.send(d11x1xx);
+      const NOT = new Discord.RichEmbed()
+     .setDescription(`:x: Usage: \`\`-setcategory <name>\`\``)  
+     .setColor("22BF41");	
+	if(!Category) return message.channel.send(NOT);
+		    	 const recategory = new Discord.RichEmbed()
+     .setDescription(`:x: I can't find a category called exactly \`\`${Category}\`\``)  
+     .setColor("22BF41");	
+      if(!Elite) return message.channel.send(recategory);
+		 
+		 		    	 const recategory1 = new Discord.RichEmbed()
+     .setDescription(`:x: This is not a category \`\`${Category}\`\``)  
+     .setColor("22BF41");	
+		 if(!message.guild.channels.filter(m => m.type === 'category')) return message.channel.send(recategory1);
+		     const D15X = new Discord.RichEmbed()
+     .setDescription(`:white_check_mark: The category has been set to \`\`${Category}\`\``)  
+     .setColor("22BF41");
+		    message.channel.send(D15X);
+	 }
+	
+	
 
 });
 
