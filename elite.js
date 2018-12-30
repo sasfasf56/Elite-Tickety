@@ -41,7 +41,7 @@ client.on("message", (message) => {
          let newname = message.content.split(' ').slice(1).join(' ');
 	 let subject = message.content.split(' ').slice(1).join(' ');
          let Category = message.content.split(" ").slice(1);
-         let Elite = message.guild.channels.find('name', `${Category}`)
+         let Elite = message.guild.channels.find('name', `${Category}`);
 	 if (message.content.startsWith("-setcategory") || message.content.startsWith("-setCategory")) {
 		    const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
@@ -54,7 +54,7 @@ client.on("message", (message) => {
 		    	 const recategory = new Discord.RichEmbed()
      .setDescription(`:x: I can't find a category called exactly \`\`${Category}\`\``)  
      .setColor("22BF41");	
-      if(!Elite)) return message.channel.send(recategory);
+      if(!Elite) return message.channel.send(recategory);
 		     const D1 = new Discord.RichEmbed()
      .setDescription(`:white_check_mark: The category has been set to \`\`${Category}\`\``)  
      .setColor("22BF41");
