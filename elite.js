@@ -36,13 +36,11 @@ client.user.setGame(`● Élite Server ,,, 1K ..`,'https://www.twitch.tv/Elite-S
 
 });
 
- 
+
 client.on("message", (message) => {
-	let newname = message.content.split(' ').slice(1).join(' ');
-	let subject = message.content.split(' ').slice(1).join(' '); 
-	if (message.content.startsWith("-setcategory")) {
-        let Category = message.content.split(" ").slice(1).join(" ");
+	let Category = message.content.split(" ").slice(1).join(" ");
         let Elite = message.guild.channels.find('name', `${Category}`);
+      if(message.content === `${prefix}setcategory`) {
      const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
      .setColor("22BF41");
@@ -61,17 +59,18 @@ client.on("message", (message) => {
 		message.channel.send(GF1);
 		   CateWP[message.guild.id] = {
            room: Category,
-}
-		
-		
+}	
   fs.writeFile("./Data/categories.json", JSON.stringify(CateWP) ,(err) =>{
   if (err) console.log(err.message);
 });
-		   
-		   
-
 	   }
-   if (message.content.startsWith("-new")) {
+  }})
+
+ 
+client.on("message", (message) => {
+	let newname = message.content.split(' ').slice(1).join(' ');
+	let subject = message.content.split(' ').slice(1).join(' '); 
+  if (message.content.toLowerCase().startsWith(prefix + `new`)) {
 	     function clean(text) {
     if (typeof(text) === "string")
       return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
@@ -94,7 +93,7 @@ client.on("message", (message) => {
         if (message.channel.name.startsWith("ticket-" + read._number.toString())) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
 		   if(CateWP[message.guild.id].room) {
-        let EliteX = message.guild.roles.find(`name`, `${CateWP[message.guild.id].room.name}`);
+        let EliteX = message.guild.channels.get(`${CateWP[message.guild.id].room.id}`);
         ticketx.setParent(EliteX);
   
       }
@@ -125,13 +124,11 @@ client.on("message", (message) => {
      .setColor("22BF41")
      .setFooter(`Nice-Ti v2 || By Sw3rD#0010` , client.user.avatarURL)
      .setTimestamp();
-            ticketx.send({
-                embed: nonedear
-            });
+            ticketx.send({embed: nonedear });
         }).catch(console.error);
 
 	  }
-	   
+  
      if(subject){
 	    read._number++;
             fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
@@ -144,6 +141,11 @@ client.on("message", (message) => {
      .setColor("22BF41");
  if (message.guild.channels.exists("name", "ticket-" + read._number.toString())) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
+        if(CateWP[message.guild.id].room) {
+        let EliteX = message.guild.channels.get(`${CateWP[message.guild.id].room.id}`);
+        ticketx.setParent(EliteX);
+  
+      }
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
@@ -170,13 +172,11 @@ client.on("message", (message) => {
      .setColor("22BF41")
      .setFooter(`Nice-Ti v2 || By Sw3rD#0010` , client.user.avatarURL)
      .setTimestamp();
-            ticketx.send({
-                embed: nonedear
-            });
+            ticketx.send({embed: nonedear });
         }).catch(console.error);
-     }
 
-  if (message.content.startsWith("-close")) {
+	  }
+  if (message.content.toLowerCase().startsWith(prefix + `close`)) {
 	              	   const d11xxx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
      .setColor("22BF41");
@@ -205,12 +205,11 @@ client.on("message", (message) => {
      .setDescription(`:x: Ticket close timed out , the ticket was not closed.`)  
      .setColor("22BF41")
                         m.edit(d11x);
-                    });
-            });
+        });
+    });
   }
-   }
- 
-	if (message.content.startsWith("-rename")) {
+
+  if (message.content.toLowerCase().startsWith(prefix + `rename`)) {
 		              	   const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
      .setColor("22BF41");
