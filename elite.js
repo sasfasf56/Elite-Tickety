@@ -47,7 +47,7 @@ client.on("message", (message) => {
       const NOT = new Discord.RichEmbed()
      .setDescription(`:x: Usage: \`\`-setcategory <name>\`\``)  
      .setColor("22BF41");	
-	if(!Category) return message.channel.send(NOT);
+	if(!Category1) return message.channel.send(NOT);
 		    	 const recategory = new Discord.RichEmbed()
      .setDescription(`:x: I can't find a category called exactly \`\`${Category1}\`\``)  
      .setColor("22BF41");	
