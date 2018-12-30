@@ -93,8 +93,8 @@ client.on("message", (message) => {
         if (message.channel.name.startsWith("ticket-" + read._number.toString())) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
 		   if(CateWP[message.guild.id].room) {
-        const EliteX = message.guild.channels.get(`${CateWP[message.guild.id].room.id}`);
-        ticketx.setParent(EliteX);
+        const parent = message.guild.channels.get(`${CateWP[message.guild.id].room.id}`).parentID
+        ticketx.setParent(parent);
   
       }
             let role = message.guild.roles.find("name", "● Élite » Team");
