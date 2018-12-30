@@ -37,7 +37,7 @@ client.user.setGame(`● Élite Server ,,, 1K ..`,'https://www.twitch.tv/Elite-S
 
  
 client.on("message", (message) => {
-	 let Category1 = message.content.split(' ').slice(1).join(' ');
+	 let Category1 = message.content.split(' ').slice(1);
          let Elite = message.guild.channels.find("name" , Category1);
 	if (message.content.startsWith("-setcategory") || message.content.startsWith("-setCategory")) {
 		    const d11x1xx = new Discord.RichEmbed()
@@ -47,7 +47,7 @@ client.on("message", (message) => {
       const NOT = new Discord.RichEmbed()
      .setDescription(`:x: Usage: \`\`-setcategory <name>\`\``)  
      .setColor("22BF41");	
-	if(!Category1) return message.channel.send(NOT);
+	if(!Category1.join(' ')) return message.channel.send(NOT);
 		    	 const recategory = new Discord.RichEmbed()
      .setDescription(`:x: I can't find a category called exactly \`\`${Category1}\`\``)  
      .setColor("22BF41");	
