@@ -110,6 +110,7 @@ client.on("message", (message) => {
         }).catch(console.error);
 
 	  }
+   }
 		   
      if(subject[0]){
 	    read._number++;
@@ -189,7 +190,6 @@ client.on("message", (message) => {
                     });
             });
 }
-	   });
  
 	if (message.content.startsWith("-rename")) {
 		              	   const d11x1xx = new Discord.RichEmbed()
@@ -215,5 +215,7 @@ client.on("message", (message) => {
 	
          
 	}
+
+});
 
 client.login(process.env.ELITE_TOKEN);
