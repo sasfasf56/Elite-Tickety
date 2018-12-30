@@ -48,10 +48,6 @@ client.on("message", (message) => {
      .setDescription(`:x: Usage: \`\`-setcategory <name>\`\``)  
      .setColor("22BF41");	
 	if(!Category1.join(' ')) return message.channel.send(NOT);
-		    	 const recategory = new Discord.RichEmbed()
-     .setDescription(`:x: I can't find a category called exactly \`\`${Category1}\`\``)  
-     .setColor("22BF41");	
-      if(!Elitex) return message.channel.send(recategory);
 		     const D15X = new Discord.RichEmbed()
      .setDescription(`:white_check_mark: The category has been set to \`\`${Category1}\`\``)  
      .setColor("22BF41");
