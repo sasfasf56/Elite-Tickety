@@ -66,6 +66,7 @@ room: Category,
 fs.writeFile("./categrays.json", JSON.stringify(gory) ,(err) =>{
   if (err) console.log(err.message);
 });
+}
 });
 
  
