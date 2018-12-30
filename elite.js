@@ -54,7 +54,7 @@ client.on("message", (message) => {
 		    	 const recategory = new Discord.RichEmbed()
      .setDescription(`:x: I can't find a category called exactly \`\`${Category}\`\``)  
      .setColor("22BF41");	
-      if(!message.guild.channels.find("name" , Category)) return message.channel.send(recategory);
+      if(!message.guild.channels.find("name" , Elite)) return message.channel.send(recategory);
 		    
 		     const D1 = new Discord.RichEmbed()
      .setDescription(`:white_check_mark: The category has been set to \`\`${Category}\`\``)  
