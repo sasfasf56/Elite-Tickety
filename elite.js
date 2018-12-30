@@ -56,7 +56,7 @@ client.on("message", (message) => {
 		 		    	 const recategory1 = new Discord.RichEmbed()
      .setDescription(`:x: This is not a category \`\`${Category}\`\``)  
      .setColor("22BF41");	
-	    if(!message.guild.channels.filter(m => m.type === 'category')) return message.channel.send(recategory1);
+	    if(!message.guild.channels.filter(m => m.type === 'category'))) return message.channel.send(recategory1);
 		     const D15X = new Discord.RichEmbed()
      .setDescription(`:white_check_mark: The category has been set to \`\`${Category}\`\``)  
      .setColor("22BF41");
