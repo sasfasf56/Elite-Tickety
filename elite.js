@@ -37,8 +37,8 @@ client.user.setGame(`● Élite Server ,,, 1K ..`,'https://www.twitch.tv/Elite-S
 });
 
 client.on('message', message => {
-  let Category = message.content.split(" ").slice(1).join(" ")
-  let Elite = message.guild.channels.find('name', `${Category}`)
+  let Category = message.content.split(" ").slice(1).join(" ");
+  let Elite = message.guild.channels.find('name', `${Category}`);
 if(message.content === `${prefix}setcategory`) {
   const nos = new Discord.RichEmbed()
      .setDescription(`:x: This command only for servers`)
@@ -66,7 +66,8 @@ room: Category,
 fs.writeFile("./Data/categories.json", JSON.stringify(CateWP) ,(err) => {
   if (err) console.log(err.message);
 });
-}
+})
+});
 
  
 client.on("message", (message) => {
