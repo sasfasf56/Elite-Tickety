@@ -37,11 +37,33 @@ client.user.setGame(`● Élite Server ,,, 1K ..`,'https://www.twitch.tv/Elite-S
 
  
 client.on("message", (message) => {
-	
+	if (message.content.startsWith("-setcategory") || message.content.startsWith("-setCategory")) {
+		 	 let Category = message.content.split(' ').slice(1).join(' ');
+         let Elite = message.guild.channels.find("name" , Category);
+		    const d11x1xx = new Discord.RichEmbed()
+     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
+     .setColor("22BF41");
+	  if(!message.member.roles.find("name", "● Élite » Team")) return message.channel.send(d11x1xx);
+      const NOT = new Discord.RichEmbed()
+     .setDescription(`:x: Usage: \`\`-setcategory <name>\`\``)  
+     .setColor("22BF41");	
+	if(!Category) return message.channel.send(NOT);
+		    	 const recategory = new Discord.RichEmbed()
+     .setDescription(`:x: I can't find a category called exactly \`\`${Category}\`\``)  
+     .setColor("22BF41");	
+      if(!Elite) return message.channel.send(recategory);
+		 
+		 		    	 const recategory1 = new Discord.RichEmbed()
+     .setDescription(`:x: This is not a category \`\`${Category}\`\``)  
+     .setColor("22BF41");	
+	    if(!message.guild.channels.filter(m => m.type === 'category')) return message.channel.send(recategory1);
+		     const D15X = new Discord.RichEmbed()
+     .setDescription(`:white_check_mark: The category has been set to \`\`${Category}\`\``)  
+     .setColor("22BF41");
+		    message.channel.send(D15X);
+	 }
          let newname = message.content.split(' ').slice(1).join(' ');
 	 let subject = message.content.split(' ').slice(1).join(' ');
-	 let Category = message.content.split(' ').slice(1).join(' ');
-         let Elite = message.guild.channels.find("name" , Category);
    if (message.content.startsWith("-new")) {
 	   if(!subject){
             read._number++;
@@ -89,8 +111,7 @@ client.on("message", (message) => {
         }).catch(console.error);
 
 	  }
-   }
-		   
+	   
      if(subject){
 	    read._number++;
             fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
@@ -164,11 +185,11 @@ client.on("message", (message) => {
                       const d11x = new Discord.RichEmbed()
      .setDescription(`:x: Ticket close timed out , the ticket was not closed.`)  
      .setColor("22BF41")
-                        m.edit(d11x).then(m2 => {
-                        }, 3000);
+                        m.edit(d11x);
                     });
             });
-}
+  }
+   }
  
 	if (message.content.startsWith("-rename")) {
 		              	   const d11x1xx = new Discord.RichEmbed()
@@ -195,32 +216,9 @@ client.on("message", (message) => {
          
 	}
 	
-	 if (message.content.startsWith("-setcategory") || message.content.startsWith("-setCategory")) {
-		    const d11x1xx = new Discord.RichEmbed()
-     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
-     .setColor("22BF41");
-	  if(!message.member.roles.find("name", "● Élite » Team")) return message.channel.send(d11x1xx);
-      const NOT = new Discord.RichEmbed()
-     .setDescription(`:x: Usage: \`\`-setcategory <name>\`\``)  
-     .setColor("22BF41");	
-	if(!Category) return message.channel.send(NOT);
-		    	 const recategory = new Discord.RichEmbed()
-     .setDescription(`:x: I can't find a category called exactly \`\`${Category}\`\``)  
-     .setColor("22BF41");	
-      if(!Elite) return message.channel.send(recategory);
-		 
-		 		    	 const recategory1 = new Discord.RichEmbed()
-     .setDescription(`:x: This is not a category \`\`${Category}\`\``)  
-     .setColor("22BF41");	
-		 if(!message.guild.channels.filter(m => m.type === 'category')) return message.channel.send(recategory1);
-		     const D15X = new Discord.RichEmbed()
-     .setDescription(`:white_check_mark: The category has been set to \`\`${Category}\`\``)  
-     .setColor("22BF41");
-		    message.channel.send(D15X);
-	 }
-	
 	
 
 });
+	
 
 client.login(process.env.ELITE_TOKEN);
