@@ -94,7 +94,7 @@ client.on("message", (message) => {
         if (message.channel.name.startsWith("ticket-" + read._number.toString())) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
 		   if(CateWP[message.guild.id].room) {
-        let EliteX = message.guild.channels.find(`${CateWP[message.guild.id].room.id}`);
+        let EliteX = message.guild.roles.find(`name`, `${CateWP[message.guild.id].room.name}`);
         ticketx.setParent(EliteX);
   
       }
