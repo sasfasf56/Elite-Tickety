@@ -58,6 +58,7 @@ client.on("message", (message) => {
       const GF1 = new Discord.RichEmbed()
      .setDescription(`:white_check_mark: Your ticket category is now \`\`${Category}\`\``)  
      .setColor("22BF41");
+		message.channel.send(GF1);
 		   CateWP[message.guild.id] = {
            room: Category,
 }
