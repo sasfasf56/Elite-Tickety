@@ -3,6 +3,7 @@ const read = require('./Data/tickets.json')
 const client = new Discord.Client({disableEveryone: true});
 const prefix = "-";
 const fs = require('fs')
+let CateWP = JSON.parse(fs.readFileSync('./Data/categories.json' , 'utf8'));
 
 
 client.on('ready',  () => {
@@ -38,8 +39,39 @@ client.user.setGame(`● Élite Server ,,, 1K ..`,'https://www.twitch.tv/Elite-S
  
 client.on("message", (message) => {
 	let newname = message.content.split(' ').slice(1).join(' ');
-	 let subject = message.content.split(' ').slice(1).join(' ');
+	let subject = message.content.split(' ').slice(1).join(' '); 
+	if (message.content.startsWith("-setcategory") || message.content.startWith("-setCategory")) {
+        let Category = message.content.split(" ").slice(1).join(" ");
+        let Elite = message.guild.channels.find('name', `${Category}`);
+		   		              	   const d11x1xx = new Discord.RichEmbed()
+     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
+     .setColor("22BF41");
+	  if(!message.member.roles.find("name", "● Élite » Team")) return message.channel.send(d11x1xx);
+		   
+		   		   		              	   const NOTX = new Discord.RichEmbed()
+     .setDescription(`:x: Usage: \`\`-setcategory <name>\`\``)  
+     .setColor("22BF41");
+		   
+          if(!Category) return message.channel.send(NOTX);
+				   		   		              	   const NOTX1 = new Discord.RichEmbed()
+     .setDescription(`:x: I can't find this category \`\`${Category}\`\``)  
+     .setColor("22BF41");
+	if(!Elite) return message.channel.send(NOTX1);
+		   CateWP[message.guild.id] = {
+room: Category,
+}
+		   
+		   
+
+	   }
    if (message.content.startsWith("-new")) {
+	     function clean(text) {
+    if (typeof(text) === "string")
+      return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+    else
+        return text;
+  }
+	 if (!message.content.startsWith(prefix) || message.author.bot) return;
 	   if(!subject){
             read._number++;
             fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
@@ -54,6 +86,11 @@ client.on("message", (message) => {
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
         if (message.channel.name.startsWith("ticket-" + read._number.toString())) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
+		   if(CateWP[message.guild.id].room) {
+        const EliteX = member.guild.channels.get(`${CateWP[message.guild.id].room.id}`).parentID
+        ticketx.setParent(EliteX);
+  
+      }
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
@@ -194,6 +231,9 @@ client.on("message", (message) => {
 	
 
 });
+
+
+
 	
 
 client.login(process.env.ELITE_TOKEN);
