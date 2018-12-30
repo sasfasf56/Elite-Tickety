@@ -50,7 +50,7 @@ client.on("message", (message) => {
 	          const already = new Discord.RichEmbed()
      .setDescription(":x: You can only have \`\`1\`\` ticket in this server! you already have \`\`1\`\`")  
      .setColor("22BF41");
-        if (message.guild.channels.exists("name", `ticket-${read._number.toString()}`)) return message.channel.send(already);
+        if (message.guild.channels.exists("name", "ticket-" + read._number.toString())) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
@@ -96,7 +96,7 @@ client.on("message", (message) => {
 	          const already = new Discord.RichEmbed()
      .setDescription(":x: You can only have \`\`1\`\` ticket in this server! you already have \`\`1\`\`")  
      .setColor("22BF41");
-        if (message.guild.channels.exists("name", `ticket-${read._number.toString()}`)) return message.channel.send(already);
+ if (message.guild.channels.exists("name", "ticket-" + read._number.toString())) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
