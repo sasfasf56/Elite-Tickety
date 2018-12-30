@@ -91,7 +91,7 @@ room: Category,
         if (message.channel.name.startsWith("ticket-" + read._number.toString())) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
 		   if(CateWP[message.guild.id].room) {
-        const EliteX = member.guild.channels.get(`${CateWP[message.guild.id].room.id}`).parentID
+        const EliteX = message.guild.channels.get(`${CateWP[message.guild.id].room.id}`).parentID
         ticketx.setParent(EliteX);
   
       }
