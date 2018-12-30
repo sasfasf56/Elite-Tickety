@@ -43,23 +43,25 @@ client.on("message", (message) => {
 	if (message.content.startsWith("-setcategory")) {
         let Category = message.content.split(" ").slice(1).join(" ");
         let Elite = message.guild.channels.find('name', `${Category}`);
-		   		              	   const d11x1xx = new Discord.RichEmbed()
+     const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
      .setColor("22BF41");
-	  if(!message.member.roles.find("name", "● Élite » Team")) return message.channel.send(d11x1xx);
-		   
-		   		   		              	   const NOTX = new Discord.RichEmbed()
+     if(!message.member.roles.find("name", "● Élite » Team")) return message.channel.send(d11x1xx);		   
+     const NOTX = new Discord.RichEmbed()
      .setDescription(`:x: Usage: \`\`-setcategory <name>\`\``)  
-     .setColor("22BF41");
-		   
-          if(!Category) return message.channel.send(NOTX);
-				   		   		              	   const NOTX1 = new Discord.RichEmbed()
+     .setColor("22BF41");	   
+    if(!Category) return message.channel.send(NOTX);
+     const NOTX1 = new Discord.RichEmbed()
      .setDescription(`:x: I can't find this category \`\`${Category}\`\``)  
      .setColor("22BF41");
 	if(!Elite) return message.channel.send(NOTX1);
+      const GF1 = new Discord.RichEmbed()
+     .setDescription(`:white_check_mark: Your ticket category is now \`\`${Category}\`\``)  
+     .setColor("22BF41");
 		   CateWP[message.guild.id] = {
-room: Category,
+           room: Category,
 }
+		
 		
   fs.writeFile("./Data/categories.json", JSON.stringify(CateWP) ,(err) =>{
   if (err) console.log(err.message);
@@ -91,7 +93,7 @@ room: Category,
         if (message.channel.name.startsWith("ticket-" + read._number.toString())) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
 		   if(CateWP[message.guild.id].room) {
-        const EliteX = message.guild.channels.get(`${CateWP[message.guild.id].room.id}`).parentID
+        const EliteX = message.guild.channels.get(`${CateWP[message.guild.id].room.id}`);
         ticketx.setParent(EliteX);
   
       }
