@@ -50,7 +50,7 @@ client.on("message", (message) => {
       const NOT = new Discord.RichEmbed()
      .setDescription(`:x: Usage: \`\`-setcategory <name>\`\``)  
      .setColor("22BF41");	
-	if(!Category) return message.channel.send(NOT);
+	if(!Category.join(" ")) return message.channel.send(NOT);
 		    	 const recategory = new Discord.RichEmbed()
      .setDescription(`:x: I can't find a category called exactly \`\`${Category}\`\``)  
      .setColor("22BF41");	
@@ -76,9 +76,7 @@ client.on("message", (message) => {
         if (message.guild.channels.exists("name", "ticket-${read._number.toString()}")) return message.channel.send(already);  
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
-		if(Elite){
-                     ticketx.setParent(Elite);
-		}
+               ticketx.setParent(Elite);
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
@@ -127,9 +125,7 @@ client.on("message", (message) => {
         if (message.guild.channels.exists("name", "ticket-${read._number.toString()}")) return message.channel.send(already);  
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
-				if(Elite){
-                     ticketx.setParent(Elite);
-		}
+               ticketx.setParent(Elite);
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
