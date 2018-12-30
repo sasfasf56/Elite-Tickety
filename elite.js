@@ -189,6 +189,7 @@ client.on("message", (message) => {
                     });
             });
 }
+	   });
  
 	if (message.content.startsWith("-rename")) {
 		              	   const d11x1xx = new Discord.RichEmbed()
