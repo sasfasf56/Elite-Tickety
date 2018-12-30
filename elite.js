@@ -57,7 +57,7 @@ client.on("message", (message) => {
 	 let subject = message.content.split(' ').slice(1).join(' ');
    if (message.content.startsWith("-new")) {
 	   if(!subject){
-            read._number++++;
+            read._number++;
             fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
 			     const rerole = new Discord.RichEmbed()
      .setDescription(":x: Please first make a role called exactly \`\`● Élite » Team\`\`")  
