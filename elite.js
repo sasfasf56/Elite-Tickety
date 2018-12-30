@@ -38,7 +38,6 @@ client.user.setGame(`● Élite Server ,,, 1K ..`,'https://www.twitch.tv/Elite-S
  
 client.on("message", (message) => {
 	 let Category1 = message.content.split(' ').slice(1);
-         let Elite = message.guild.channels.find("name" , Category1);
 	if (message.content.startsWith("-setcategory") || message.content.startsWith("-setCategory")) {
 		    const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
@@ -61,6 +60,10 @@ client.on("message", (message) => {
 	 let subject = message.content.split(' ').slice(1).join(' ');
    if (message.content.startsWith("-new")) {
 	   if(!subject){
+                let Elite = message.guild.channels.find("name" , Category1);
+		   if(!Elite){
+			 message.guild.createChannel(`${Category1}` , "category");
+		   }
             read._number++;
             fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
 			     const rerole = new Discord.RichEmbed()
@@ -73,7 +76,7 @@ client.on("message", (message) => {
         if (message.guild.channels.exists("name", `ticket-${read._number.toString()}`)) return message.channel.send(already);  
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
-             ticketx.setParent(Category1);
+             ticketx.setParent(Elite);
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
@@ -109,6 +112,10 @@ client.on("message", (message) => {
 	  }
 	   
      if(subject){
+	       let Elite = message.guild.channels.find("name" , Category1);
+		   if(!Elite){
+			 message.guild.createChannel(`${Category1}` , "category");
+		   }
 	    read._number++;
             fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
 			     const rerole = new Discord.RichEmbed()
@@ -121,7 +128,7 @@ client.on("message", (message) => {
         if (message.guild.channels.exists("name", `ticket-${read._number.toString()}`)) return message.channel.send(already);  
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
-             ticketx.setParent(Category1);
+             ticketx.setParent(Elite);
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
