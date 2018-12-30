@@ -41,6 +41,10 @@ client.on("message", (message) => {
 	let Category = message.content.split(" ").slice(1).join(" ");
         let Elite = message.guild.channels.find('name', `${Category}`);
       if(message.content === `${prefix}setcategory`) {
+	       const nos = new Discord.RichEmbed()
+     .setDescription(`:x: This command only for servers`)
+     .setColor("22BF41");
+  if(!message.channel.guild) return message.channel.send(nos).then(m => m.delete(5000));
      const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
      .setColor("22BF41");
@@ -71,6 +75,11 @@ client.on("message", (message) => {
 	let newname = message.content.split(' ').slice(1).join(' ');
 	let subject = message.content.split(' ').slice(1).join(' '); 
   if (message.content.toLowerCase().startsWith(prefix + `new`)) {
+	  	       const nos = new Discord.RichEmbed()
+     .setDescription(`:x: This command only for servers`)
+     .setColor("22BF41");
+  if(!message.channel.guild) return message.channel.send(nos).then(m => m.delete(5000));
+	  
 	     function clean(text) {
     if (typeof(text) === "string")
       return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
@@ -177,6 +186,10 @@ client.on("message", (message) => {
 
 	  }
   if (message.content.toLowerCase().startsWith(prefix + `close`)) {
+	  	       const nos = new Discord.RichEmbed()
+     .setDescription(`:x: This command only for servers`)
+     .setColor("22BF41");
+  if(!message.channel.guild) return message.channel.send(nos).then(m => m.delete(5000));
 	              	   const d11xxx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
      .setColor("22BF41");
@@ -210,6 +223,10 @@ client.on("message", (message) => {
   }
 
   if (message.content.toLowerCase().startsWith(prefix + `rename`)) {
+	  	       const nos = new Discord.RichEmbed()
+     .setDescription(`:x: This command only for servers`)
+     .setColor("22BF41");
+  if(!message.channel.guild) return message.channel.send(nos).then(m => m.delete(5000));
 		              	   const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
      .setColor("22BF41");
