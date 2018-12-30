@@ -40,7 +40,7 @@ client.user.setGame(`● Élite Server ,,, 1K ..`,'https://www.twitch.tv/Elite-S
 client.on("message", (message) => {
 	let newname = message.content.split(' ').slice(1).join(' ');
 	let subject = message.content.split(' ').slice(1).join(' '); 
-	if (message.content.startsWith("-setcategory") || message.content.startWith("-setCategory")) {
+	if (message.content.startsWith("-setcategory")) {
         let Category = message.content.split(" ").slice(1).join(" ");
         let Elite = message.guild.channels.find('name', `${Category}`);
 		   		              	   const d11x1xx = new Discord.RichEmbed()
