@@ -40,7 +40,7 @@ client.on("message", (message) => {
 	
          let newname = message.content.split(' ').slice(1).join(' ');
 	 let subject = message.content.split(' ').slice(1).join(' ');
-	 let Category = message.content.split(' ').slice(2).join(' ');
+	 let Category = message.content.split(' ').slice(1).join(' ');
          let Elite = message.guild.channels.find("name" , Category);
 	 if (message.content.startsWith("-setcategory") || message.content.startsWith("-setCategory")) {
 		    const d11x1xx = new Discord.RichEmbed()
