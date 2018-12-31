@@ -36,18 +36,18 @@ client.user.setGame(`● Élite Server ,,, 1K ..`,'https://www.twitch.tv/Elite-S
 
 });
 
-client.on('message', message => {
+client.on("message", (message) => {
   let Category = message.content.split(" ").slice(1).join(" ");
   let Elite = message.guild.channels.find('name', `${Category}`);
-if(message.content === `${prefix}setcategory`) {
-  const nos = new Discord.RichEmbed()
+    if(message.content === `${prefix}setcategory`) {
+	const nos = new Discord.RichEmbed()
      .setDescription(`:x: This command only for servers`)
      .setColor("22BF41");
   if(!message.channel.guild) return message.channel.send(nos).then(m => m.delete(5000));
-     const d11x1xx = new Discord.RichEmbed()
+      const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
      .setColor("22BF41");
-     if(!message.member.roles.find("name", "● Élite » Team")) return message.channel.send(d11x1xx);		   
+     if(!message.member.roles.find("name", "● Élite » Team")) return message.channel.send(d11x1xx);
      const NOTX = new Discord.RichEmbed()
      .setDescription(`:x: Usage: \`\`-setcategory <name>\`\``)  
      .setColor("22BF41");	   
@@ -60,13 +60,14 @@ if(message.content === `${prefix}setcategory`) {
      .setDescription(`:white_check_mark: Your ticket category is now \`\`${Category}\`\``)  
      .setColor("22BF41");
 		message.channel.send(GF1);
-CateWP[message.guild.id] = {
+  CateWP[message.guild.id] = {
 room: Category,
 }
-fs.writeFile("./Data/categories.json", JSON.stringify(CateWP) ,(err) => {
+  fs.writeFile("./Data/categories.json", JSON.stringify(CateWP) ,(err) => {
   if (err) console.log(err.message);
+});  	
+	}
 });
-}
 
 
  
