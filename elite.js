@@ -249,10 +249,6 @@ client.on("message", (message) => {
 	
          
 	}
-	
-	
-
-});
 
 
 
