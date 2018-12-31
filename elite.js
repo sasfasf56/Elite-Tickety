@@ -61,10 +61,7 @@ if(message.content === `${prefix}new`) {
      .setDescription(":x: You can only have \`\`1\`\` ticket in this server! you already have \`\`1\`\`")  
      .setColor("22BF41");
         if (message.guild.channels.exists("name", "ticket-" + read._number.toString())) return message.channel.send(already);
-	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
-        if (message.channel.name.startsWith("ticket-" + read._number.toString())) return message.channel.send(already);
-        if (message.guild.channels.exists("name", `${newname}` + read._number.toString())) return message.channel.send(already);
-        if (message.channel.name.startsWith(`${newname}` + read._number.toString())) return message.channel.send(already);
+	if (message.guild.channels.exists("name", "ticket-" + newname)) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
@@ -109,10 +106,7 @@ if(message.content === `${prefix}new`) {
      .setDescription(":x: You can only have \`\`1\`\` ticket in this server! you already have \`\`1\`\`")  
      .setColor("22BF41");
         if (message.guild.channels.exists("name", "ticket-" + read._number.toString())) return message.channel.send(already);
-	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
-        if (message.channel.name.startsWith("ticket-" + read._number.toString())) return message.channel.send(already);
-	if (message.guild.channels.exists("name", `${newname}` + read._number.toString())) return message.channel.send(already);
-        if (message.channel.name.startsWith(`${newname}` + read._number.toString())) return message.channel.send(already);
+	if (message.guild.channels.exists("name", "ticket-" + newname)) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
@@ -208,16 +202,14 @@ client.on("message", async message => {
      .setColor("22BF41");
 	if (!message.channel.name.startsWith("ticket-")) return message.channel.send(d11x1xxNOT);
      const NOTX1 = new Discord.RichEmbed()
-     .setDescription(`:x: Usage: \`\`${prefix}newname <name>\`\``)  
+     .setDescription(`:x: Usage: \`\`${prefix}rename <name>\`\``)  
      .setColor("22BF41");
 	if(!newname) return message.channel.send(NOTX1);
-		
-		message.channel.setname(`${newname}-` + read._number.toString());
-		
+		message.channel.setName(`ticket` + newname);
 		  const D1 = new Discord.RichEmbed()
      .setDescription(`:white_check_mark: This ticket has been renamed to \`\`${newname}\`\``)  
      .setColor("22BF41");
-		message.channel.send(D1);
+	message.channel.send(D1);
 		
 	}
 });
