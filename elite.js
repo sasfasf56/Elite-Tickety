@@ -2,8 +2,7 @@ const Discord = require('discord.js');
 const read = require('./Data/tickets.json')
 const client = new Discord.Client({disableEveryone: true});
 const prefix = "-";
-const fs = require('fs')
-const CateWP = JSON.parse(fs.readFileSync('./Data/categories.json' , 'utf8'));
+const fs = require('fs');
 
 
 client.on('ready',  () => {
@@ -47,46 +46,6 @@ client.on("message", async message => {
       return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
     else
         return text;
-  }	
-    if(message.content === `${prefix}setcategory`) {
-  let Category = message.content.split(" ").slice(1).join(" ");
-  let Elite = message.guild.channels.find('name', `${Category}`);
-  let team = message.member.roles.find("name", "● Élite » Team");
-      const d11x1xx = new Discord.RichEmbed()
-     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
-     .setColor("22BF41");
-     if(!team) return message.channel.send(d11x1xx);
-     const NOTX = new Discord.RichEmbed()
-     .setDescription(`:x: Usage: \`\`-setcategory <name>\`\``)  
-     .setColor("22BF41");	   
-    if(!Category) return message.channel.send(NOTX);
-     const NOTX1 = new Discord.RichEmbed()
-     .setDescription(`:x: I can't find this category \`\`${Category}\`\``)  
-     .setColor("22BF41");
-	if(!Elite) return message.channel.send(NOTX1);
-      const GF1 = new Discord.RichEmbed()
-     .setDescription(`:white_check_mark: Your ticket category is now \`\`${Category}\`\``)  
-     .setColor("22BF41");
-		message.channel.send(GF1);
-  CateWP[message.guild.id] = {
-room: Category,
-}
-  fs.writeFile("./Data/categories.json", JSON.stringify(CateWP) ,(err) => {
-  if (err) console.log(err.message);
-});  	
-	}
-});
-client.on("message", async message => {
-	 const nos = new Discord.RichEmbed()
-     .setDescription(`:x: This command only for servers`)
-     .setColor("22BF41");
-  if(!message.channel.guild) return message.channel.send(nos).then(m => m.delete(5000));
-  if (!message.content.startsWith(prefix) || message.author.bot) return;
-	function clean(text) {
-    if (typeof(text) === "string")
-      return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-    else
-        return text;
   }
 if(message.content === `${prefix}new`) {
    let newname = message.content.split(' ').slice(1).join(' '); 
@@ -107,11 +66,6 @@ if(message.content === `${prefix}new`) {
         if (message.guild.channels.exists("name", `${newname}` + read._number.toString())) return message.channel.send(already);
         if (message.channel.name.startsWith(`${newname}` + read._number.toString())) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
-		   if(CateWP[message.guild.id].room) {
-        let EliteX = message.guild.channels.get(`${CateWP[message.guild.id].room.id}`);
-        ticketx.setParent(EliteX);
-  
-      }
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
@@ -160,11 +114,6 @@ if(message.content === `${prefix}new`) {
 	if (message.guild.channels.exists("name", `${newname}` + read._number.toString())) return message.channel.send(already);
         if (message.channel.name.startsWith(`${newname}` + read._number.toString())) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
-        if(CateWP[message.guild.id].room) {
-        let EliteX = message.guild.channels.get(`${CateWP[message.guild.id].room.id}`);
-        ticketx.setParent(EliteX);
-  
-      }
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
