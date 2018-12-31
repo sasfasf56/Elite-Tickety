@@ -216,7 +216,6 @@ client.on("message", (message) => {
      .setDescription(`:x: Ticket close timed out , the ticket was not closed.`)  
      .setColor("22BF41")
                         m.edit(d11x);
-		}
                });
             });
     }
