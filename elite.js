@@ -215,8 +215,6 @@ client.on("message", (message) => {
         });
     });
   }
-  
-});
 	  
   if (message.content.toLowerCase().startsWith(prefix + `rename`)) {
 	let newname = message.content.split(' ').slice(1).join(' ');
