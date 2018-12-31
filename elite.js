@@ -182,40 +182,7 @@ client.on("message", (message) => {
             ticketx.send({embed: nonedear });
         }).catch(console.error);
 
-	  }
-	  
-	 if (message.content.toLowerCase().startsWith(prefix + `close`)) {
-    const nos = new Discord.RichEmbed()
-     .setDescription(`:x: This command only for servers`)
-     .setColor("22BF41");
-  if(!message.channel.guild) return message.channel.send(nos).then(m => m.delete(5000));
-	              	   const d11xxx = new Discord.RichEmbed()
-     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
-     .setColor("22BF41");
-	  if(!message.member.roles.find("name", "● Élite » Team")) return message.channel.send(d11xxx);
-	   	   const d1x = new Discord.RichEmbed()
-     .setDescription(`:x: Please only run this command in a ticket channel!`)  
-     .setColor("22BF41")
-        if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(d1x);
-            	   const d1152354525 = new Discord.RichEmbed()
-     .setDescription(`Are you sure you want to close this ticket? The channel will be deleted.\n**Repeat the command to close the ticket.**\nYour request will be voided in 20 seconds.`)  
-     .setColor("22BF41");
-        message.channel.send(d1152354525)
-    .then((m) => {
-      message.channel.awaitMessages(response => response.content === `${prefix}close`, {
-        max: 1,
-        time: 20000,
-        errors: ['time'],
-      })
-      .then((collected) => {
-          message.channel.delete();
-        })
-        .catch(() => {
-          m.edit('Ticket close timed out, the ticket was not closed.');
-        });
-    });
-  }
-	  
+	  }  
   if (message.content.toLowerCase().startsWith(prefix + `rename`)) {
 	let newname = message.content.split(' ').slice(1).join(' ');
 	  	       const nos = new Discord.RichEmbed()
