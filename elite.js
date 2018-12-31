@@ -47,7 +47,7 @@ client.on("message", async message => {
     else
         return text;
   }
-if(message.content === `${prefix}new`) {
+if(message.content.toLowerCase().startsWith(prefix + `new`)) {
    let newname = message.content.split(' ').slice(1).join(' '); 
    let subject = message.content.split(' ').slice(1).join(' '); 
 	if(!subject){
@@ -141,7 +141,7 @@ if(message.content === `${prefix}new`) {
 }
 
 
-if(message.content === `${prefix}close`) {	
+if(message.content.toLowerCase().startsWith(prefix + `close`)) {	
 	let team = message.member.roles.find("name", "● Élite » Team");
 	 const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
@@ -190,7 +190,7 @@ client.on("message", async message => {
     else
         return text;
   }
-	if(message.content === `${prefix}rename`) {
+	if(message.content.toLowerCase().startsWith(prefix + `rename`)){
 		let newname = message.content.split(' ').slice(1).join(' '); 
 		let team = message.member.roles.find("name", "● Élite » Team");
 	 const d11x1xx = new Discord.RichEmbed()
