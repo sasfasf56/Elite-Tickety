@@ -105,7 +105,6 @@ if(message.content === `${prefix}new`) {
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
         if (message.channel.name.startsWith("ticket-" + read._number.toString())) return message.channel.send(already);
         if (message.guild.channels.exists("name", `${newname}` + read._number.toString())) return message.channel.send(already);
-	if (message.channel.name.startsWith(`${newname}`)) return message.channel.send(already);
         if (message.channel.name.startsWith(`${newname}` + read._number.toString())) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
 		   if(CateWP[message.guild.id].room) {
@@ -159,7 +158,6 @@ if(message.content === `${prefix}new`) {
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
         if (message.channel.name.startsWith("ticket-" + read._number.toString())) return message.channel.send(already);
 	if (message.guild.channels.exists("name", `${newname}` + read._number.toString())) return message.channel.send(already);
-	if (message.channel.name.startsWith(`${newname}`)) return message.channel.send(already);
         if (message.channel.name.startsWith(`${newname}` + read._number.toString())) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
         if(CateWP[message.guild.id].room) {
