@@ -216,10 +216,12 @@ client.on("message", (message) => {
      .setDescription(`:x: Ticket close timed out , the ticket was not closed.`)  
      .setColor("22BF41")
                         m.edit(d11x);
-        });
-    });
-  }
-
+		}
+               });
+            });
+    }
+ 
+});
   if (message.content.toLowerCase().startsWith(prefix + `rename`)) {
 	let newname = message.content.split(' ').slice(1).join(' ');
 	  	       const nos = new Discord.RichEmbed()
@@ -249,9 +251,6 @@ client.on("message", (message) => {
 	
          
 	}
-
-
-
-	
+});
 
 client.login(process.env.ELITE_TOKEN);
