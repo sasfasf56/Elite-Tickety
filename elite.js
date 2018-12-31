@@ -37,10 +37,7 @@ client.user.setGame(`● Élite Server ,,, 1K ..`,'https://www.twitch.tv/Elite-S
 });
 
 client.on("message", async message => {
-  let Category = message.content.split(" ").slice(1).join(" ");
-  let Elite = message.guild.channels.find('name', `${Category}`);
-    if(message.content === `${prefix}setcategory`) {
-	const nos = new Discord.RichEmbed()
+	 const nos = new Discord.RichEmbed()
      .setDescription(`:x: This command only for servers`)
      .setColor("22BF41");
   if(!message.channel.guild) return message.channel.send(nos).then(m => m.delete(5000));
@@ -50,11 +47,15 @@ client.on("message", async message => {
       return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
     else
         return text;
-  }
+  }	
+    if(message.content === `${prefix}setcategory`) {
+  let Category = message.content.split(" ").slice(1).join(" ");
+  let Elite = message.guild.channels.find('name', `${Category}`);
+  let team = message.member.roles.find("name", "● Élite » Team");
       const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
      .setColor("22BF41");
-     if(!message.member.roles.find("name", "● Élite » Team")) return message.channel.send(d11x1xx);
+     if(!team) return message.channel.send(d11x1xx);
      const NOTX = new Discord.RichEmbed()
      .setDescription(`:x: Usage: \`\`-setcategory <name>\`\``)  
      .setColor("22BF41");	   
@@ -88,6 +89,7 @@ client.on("message", async message => {
         return text;
   }
 if(message.content === `${prefix}new`) {
+   let newname = message.content.split(' ').slice(1).join(' '); 
    let subject = message.content.split(' ').slice(1).join(' '); 
 	if(!subject){
             read._number++;
@@ -102,6 +104,9 @@ if(message.content === `${prefix}new`) {
         if (message.guild.channels.exists("name", "ticket-" + read._number.toString())) return message.channel.send(already);
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
         if (message.channel.name.startsWith("ticket-" + read._number.toString())) return message.channel.send(already);
+        if (message.guild.channels.exists("name", `${newname}` + read._number.toString())) return message.channel.send(already);
+	if (message.channel.name.startsWith(`${newname}`)) return message.channel.send(already);
+        if (message.channel.name.startsWith(`${newname}` + read._number.toString())) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
 		   if(CateWP[message.guild.id].room) {
         let EliteX = message.guild.channels.get(`${CateWP[message.guild.id].room.id}`);
@@ -153,6 +158,9 @@ if(message.content === `${prefix}new`) {
         if (message.guild.channels.exists("name", "ticket-" + read._number.toString())) return message.channel.send(already);
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
         if (message.channel.name.startsWith("ticket-" + read._number.toString())) return message.channel.send(already);
+	if (message.guild.channels.exists("name", `${newname}` + read._number.toString())) return message.channel.send(already);
+	if (message.channel.name.startsWith(`${newname}`)) return message.channel.send(already);
+        if (message.channel.name.startsWith(`${newname}` + read._number.toString())) return message.channel.send(already);
         message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
         if(CateWP[message.guild.id].room) {
         let EliteX = message.guild.channels.get(`${CateWP[message.guild.id].room.id}`);
@@ -227,6 +235,44 @@ if(message.content === `${prefix}close`) {
     });
   }
   
+});
+
+client.on("message", async message => {
+		 const nos = new Discord.RichEmbed()
+     .setDescription(`:x: This command only for servers`)
+     .setColor("22BF41");
+  if(!message.channel.guild) return message.channel.send(nos).then(m => m.delete(5000));
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
+	function clean(text) {
+    if (typeof(text) === "string")
+      return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+    else
+        return text;
+  }
+	if(message.content === `${prefix}rename`) {
+		let newname = message.content.split(' ').slice(1).join(' '); 
+		let team = message.member.roles.find("name", "● Élite » Team");
+	 const d11x1xx = new Discord.RichEmbed()
+     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
+     .setColor("22BF41");
+	if(!team) return message.channel.send(d11x1xx);
+		 const d11x1xxNOT = new Discord.RichEmbed()
+     .setDescription(":x: You only can run this command in a ticket channel!")  
+     .setColor("22BF41");
+	if (!message.channel.name.startsWith("ticket-")) return message.channel.send(d11x1xxNOT);
+     const NOTX1 = new Discord.RichEmbed()
+     .setDescription(`:x: Usage: \`\`${prefix}newname <name>\`\``)  
+     .setColor("22BF41");
+	if(!newname) return message.channel.send(NOTX1);
+		
+		message.channel.setname(`${newname}-` + read._number.toString());
+		
+		  const D1 = new Discord.RichEmbed()
+     .setDescription(`:white_check_mark: This ticket has been renamed to \`\`${newname}\`\``)  
+     .setColor("22BF41");
+		message.channel.send(D1);
+		
+	}
 });
 
   
