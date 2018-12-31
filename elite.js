@@ -183,34 +183,28 @@ client.on("message", (message) => {
         }).catch(console.error);
 
 	  }  
-  if (message.content.toLowerCase().startsWith(prefix + `rename`)) {
-	let newname = message.content.split(' ').slice(1).join(' ');
-	  	       const nos = new Discord.RichEmbed()
-     .setDescription(`:x: This command only for servers`)
-     .setColor("22BF41");
-  if(!message.channel.guild) return message.channel.send(nos).then(m => m.delete(5000));
-		              	   const d11x1xx = new Discord.RichEmbed()
-     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
-     .setColor("22BF41");
-	  if(!message.member.roles.find("name", "● Élite » Team")) return message.channel.send(d11x1xx);
-	   	   const d1dx = new Discord.RichEmbed()
-     .setDescription(`:x: Please only run this command in a ticket channel!`)  
-     .setColor("22BF41")
-	if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(d1dx);
-		const usageof = new Discord.RichEmbed()
-     .setDescription(`:x: Usage: \`\`-rename <name>\`\``)  
-     .setColor("22BF41");
-	  if(!newname) return message.channel.send(usageof);
-		
-	message.channel.setName(`ticket-` + newname);
-		
-		const renamed = new Discord.RichEmbed()
-     .setDescription(`:white_check_mark: The channel has been renamed to ` + `\`\`${newname}\`\``)  
-     .setColor("22BF41");
-		
-         message.channel.send(renamed);
-	
-         
-	}
+	  
+	   if (message.content.toLowerCase().startsWith(prefix + `close`)) {
+    if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
+  
+    message.channel.send(`Are you sure? Once confirmed, you cannot reverse this action!\nTo confirm, type \`>confirm\`. This will time out in 10 seconds and be cancelled.`)
+    .then((m) => {
+      message.channel.awaitMessages(response => response.content === '>confirm', {
+        max: 1,
+        time: 10000,
+        errors: ['time'],
+      })
+      .then((collected) => {
+          message.channel.delete();
+        })
+        .catch(() => {
+          m.edit('Ticket close timed out, the ticket was not closed.').then(m2 => {
+              m2.delete();
+          }, 3000);
+        });
+    });
+  }
+  
+});
 
 client.login(process.env.ELITE_TOKEN);
