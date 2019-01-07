@@ -57,13 +57,13 @@ client.on("message", async message => {
 		const category = setc[message.guild.id].category
 		let newcategory = message.content.split(' ').slice(1).join(' ');
 		let thiscategory = message.guild.channels.find('name', newcategory);
-		let fltrc = message.guild.channels.filter(c => c.type !== 'category');
+		let fltrc = message.guild.channels.find(c => c.type !== 'category');
  if(!setrole[message.guild.id]) setrole[message.guild.id] = {
     role: "Support Team"
 }
     const role = setrole[message.guild.id].role
     const srole = setrole[message.guild.id].role
-   let thisrole = message.guild.roles.find('name', srole);
+    let thisrole = message.member.roles.has(srole);
 	 const d11x1xx = new Discord.RichEmbed()
      .setDescription(`:x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`${srole}\`\` to yourself.`)  
      .setColor("22BF41");
