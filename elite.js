@@ -218,7 +218,7 @@ if(message.content.toLowerCase().startsWith(prefix + `close`)) {
       .then((collected) => {
           message.channel.delete();
         }) 
-	.catch() => {
+       .catch(() => {
 	      const yesw = new Discord.RichEmbed()
      .setDescription(`:x: Ticket close timed out, the ticket was not closed.`)  
      .setColor("22BF41");
