@@ -5,7 +5,6 @@ const prefix = "-";
 const fs = require('fs');
 const setc = {}
 
-
 client.on('ready',  () => {
 console.log(`
 
@@ -54,17 +53,13 @@ client.on("message", async message => {
 	if(!setc[message.guild.id]) setc[message.guild.id] = {
     category: "Tickets"
 }
-                const category = setc[message.guild.id].category
+		const category = setc[message.guild.id].category
 		let newcategory = message.content.split(' ').slice(1).join(" ")
 		let team = message.member.roles.find("name", "● Élite » Team");
 	 const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
      .setColor("22BF41");
 	if(!team) return message.channel.send(d11x1xx);
-		 const d11x1xxNOT = new Discord.RichEmbed()
-     .setDescription(":x: You only can run this command in a ticket channel!")  
-     .setColor("22BF41");
-	if (!message.channel.name.startsWith("ticket-")) return message.channel.send(d11x1xxNOT);
      const NOTX1 = new Discord.RichEmbed()
      .setDescription(`:x: Usage: \`\`${prefix}setcategory <name>\`\``)  
      .setColor("22BF41");
@@ -90,7 +85,7 @@ if(message.content.toLowerCase().startsWith(prefix + `new`)) {
 }
     const category = setc[message.guild.id].category
     const scategory = setc[message.guild.id].category
-    let thiscategory = message.guild.channels.find('name', scategory);
+   let thiscategory = message.guild.channels.find('name', scategory);
    let subject = message.content.split(' ').slice(1).join(' '); 
    let ticketnumber = 0000;
 	if(!subject[0]){
