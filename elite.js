@@ -56,7 +56,7 @@ client.on("message", async message => {
 		const category = setc[message.guild.id].category
 		let newcategory = message.content.split(' ').slice(1).join(' ');
 		let thiscategory = message.guild.channels.find('name', newcategory);
-		let fltrc = message.guild.channels.find(c => c.name.toLowerCase() === newcategory).type === 'category';
+		let fltrc = message.guild.channels.filter(c => c.type === 'category');
 		let team = message.member.roles.find("name", "● Élite » Team");
 	 const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
