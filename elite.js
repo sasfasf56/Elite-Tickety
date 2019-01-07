@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const read = require('./Data/tickets.json')
+const ticket = require('./Data/tickets.json');
 const client = new Discord.Client({disableEveryone: true});
 const prefix = "-";
 const fs = require('fs');
@@ -35,22 +35,24 @@ client.user.setGame(`● Élite Server ,,, 1K ..`,'https://www.twitch.tv/Elite-S
 
 });
 
+function clean(text) {
+    if (typeof(text) === "string")
+      return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+    else
+        return text;
+  }
+
 client.on("message", async message => {
 	 const nos = new Discord.RichEmbed()
      .setDescription(`:x: This command only for servers`)
      .setColor("22BF41");
   if(!message.channel.guild) return message.channel.send(nos).then(m => m.delete(5000));
   if (!message.content.startsWith(prefix) || message.author.bot) return;
-	function clean(text) {
-    if (typeof(text) === "string")
-      return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-    else
-        return text;
-  }
 if(message.content.toLowerCase().startsWith(prefix + `new`)) {
    let subject = message.content.split(' ').slice(1).join(' '); 
+   let ticketnumber = 0;
 	if(!subject[0]){
-            read._number++;
+            ticketnumber++;
             fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
 			     const rerole = new Discord.RichEmbed()
      .setDescription(":x: Please first make a role called exactly \`\`● Élite » Team\`\`")  
@@ -59,11 +61,12 @@ if(message.content.toLowerCase().startsWith(prefix + `new`)) {
 	          const already = new Discord.RichEmbed()
      .setDescription(":x: You can only have \`\`1\`\` ticket in this server! you already have \`\`1\`\`")  
      .setColor("22BF41");
-        if (message.guild.channels.exists("name", "ticket-" + read._number.toString())) return message.channel.send(already);
+        if (message.guild.channels.exists("name", "ticket-" + ticketnumber)) return message.channel.send(already);
 	if (message.guild.channels.exists("name", "ticket-")) return message.channel.send(already);
+	if (message.guild.channels.exists("name", "ticket")) return message.channel.send(already);
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
-	if (message.channel.name.startsWith("ticket-" + read._number.toString())) return message.channel.send(already);
-        message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
+	if (message.channel.name.startsWith("ticket-" + ticketnumber)) return message.channel.send(already);
+        message.guild.createChannel(`ticket-${ticketnumber}`, "text").then(ticketx => {
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
@@ -97,8 +100,7 @@ if(message.content.toLowerCase().startsWith(prefix + `new`)) {
 	}
 	
  if(subject[0]){
-	    read._number++;
-            fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
+            ticketnumber++;
 			     const rerole = new Discord.RichEmbed()
      .setDescription(":x: Please first make a role called exactly \`\`● Élite » Team\`\`")  
      .setColor("22BF41");		    
@@ -106,11 +108,12 @@ if(message.content.toLowerCase().startsWith(prefix + `new`)) {
 	          const already = new Discord.RichEmbed()
      .setDescription(":x: You can only have \`\`1\`\` ticket in this server! you already have \`\`1\`\`")  
      .setColor("22BF41");
-        if (message.guild.channels.exists("name", "ticket-" + read._number.toString())) return message.channel.send(already);
+        if (message.guild.channels.exists("name", "ticket-" + ticketnumber)) return message.channel.send(already);
 	if (message.guild.channels.exists("name", "ticket-")) return message.channel.send(already);
+	if (message.guild.channels.exists("name", "ticket")) return message.channel.send(already);
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
-	if (message.channel.name.startsWith("ticket-" + read._number.toString())) return message.channel.send(already);
-        message.guild.createChannel(`ticket-${read._number.toString()}`, "text").then(ticketx => {
+	if (message.channel.name.startsWith("ticket-" + ticketnumber)) return message.channel.send(already);
+        message.guild.createChannel(`ticket-${ticketnumber}`, "text").then(ticketx => {
             let role = message.guild.roles.find("name", "● Élite » Team");
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
@@ -187,12 +190,7 @@ client.on("message", async message => {
      .setColor("22BF41");
   if(!message.channel.guild) return message.channel.send(nos).then(m => m.delete(5000));
   if (!message.content.startsWith(prefix) || message.author.bot) return;
-	function clean(text) {
-    if (typeof(text) === "string")
-      return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-    else
-        return text;
-  }
+	
 	if(message.content.toLowerCase().startsWith(prefix + `rename`)){
 		let newname = message.content.split(' ').slice(1).join(' '); 
 		let team = message.member.roles.find("name", "● Élite » Team");
