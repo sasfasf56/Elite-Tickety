@@ -53,7 +53,6 @@ if(message.content.toLowerCase().startsWith(prefix + `new`)) {
    let ticketnumber = 0000;
 	if(!subject[0]){
             ticketnumber++;
-            fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
 			     const rerole = new Discord.RichEmbed()
      .setDescription(":x: Please first make a role called exactly \`\`● Élite » Team\`\`")  
      .setColor("22BF41");		    
