@@ -54,7 +54,9 @@ client.on("message", async message => {
     category: "Tickets"
 }
 		const category = setc[message.guild.id].category
-		let newcategory = message.content.split(' ').slice(1).join(" ")
+		let newcategory = message.content.split(' ').slice(1).join(' ');
+		let thiscategory = message.guild.channels.find('name', newcategory);
+		let fltrc = message.guild.channels.filter(c => c.name.toLowerCase() === newcategory).type === 'category');
 		let team = message.member.roles.find("name", "● Élite » Team");
 	 const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
@@ -64,6 +66,14 @@ client.on("message", async message => {
      .setDescription(`:x: Usage: \`\`${prefix}setcategory <name>\`\``)  
      .setColor("22BF41");
 	if(!newcategory) return message.channel.send(NOTX1);
+		  const CANT = new Discord.RichEmbed()
+     .setDescription(`:x: I can't find this category \`\`${newcategory}\`\``)  
+     .setColor("22BF41");
+		if(!thiscategory) return message.channel.send(CANT);
+	const filtr = new Discord.RichEmbed()
+     .setDescription(`:x: This not a category \`\`${newcategory}\`\``)  
+     .setColor("22BF41");
+		if(!fltrc) return message.channel.send(filtr);
 	  setc[message.guild.id].category = newcategory	
 		  const D1 = new Discord.RichEmbed()
      .setDescription(`:white_check_mark: The tickets category has been set to \`\`${newcategory}\`\``)  
@@ -207,8 +217,7 @@ if(message.content.toLowerCase().startsWith(prefix + `close`)) {
       })
       .then((collected) => {
           message.channel.delete();
-        })
-        .catch((collected) => {
+        }) else {
 	      const yesw = new Discord.RichEmbed()
      .setDescription(`:x: Ticket close timed out, the ticket was not closed.`)  
      .setColor("22BF41");
