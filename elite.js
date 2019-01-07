@@ -57,12 +57,17 @@ client.on("message", async message => {
 		const category = setc[message.guild.id].category
 		let newcategory = message.content.split(' ').slice(1).join(' ');
 		let thiscategory = message.guild.channels.find('name', newcategory);
-		let fltrc = message.guild.channels.filter(c => c.type === 'category');
-		let team = message.member.roles.find("name", "● Élite » Team");
+		let fltrc = message.guild.channels.filter(c => c.type !== 'category');
+ if(!setrole[message.guild.id]) setrole[message.guild.id] = {
+    role: "Support Team"
+}
+    const role = setrole[message.guild.id].role
+    const srole = setrole[message.guild.id].role
+   let thisrole = message.guild.roles.find('name', srole);
 	 const d11x1xx = new Discord.RichEmbed()
-     .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
+     .setDescription(`:x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`${srole}\`\` to yourself.`)  
      .setColor("22BF41");
-	if(!team) return message.channel.send(d11x1xx);
+	if(!thisrole) return message.channel.send(d11x1xx);
      const NOTX1 = new Discord.RichEmbed()
      .setDescription(`:x: Usage: \`\`${prefix}setcategory <name>\`\``)  
      .setColor("22BF41");
@@ -99,6 +104,11 @@ client.on("message", async message => {
 		const role = setrole[message.guild.id].role
 		let newrole = message.content.split(' ').slice(1).join(' ');
 		let thisrole = message.guild.roles.find('name', newrole);
+		let permission = message.guild.member(message.author).hasPermissions('ADMINISTRATOR');
+		 const d11x1x42x = new Discord.RichEmbed()
+     .setDescription(`:x: You do not have permission for that command! If you believe this is a mistake please add a high role has \`\`ADMINISTRATOR\`\` permission to yourself.`)  
+     .setColor("22BF41");
+     if(!permission) return message.channel.send(d11x1x42x);
      const NOTX1 = new Discord.RichEmbed()
      .setDescription(`:x: Usage: \`\`${prefix}setrole <name>\`\``)  
      .setColor("22BF41");
@@ -140,7 +150,7 @@ if(message.content.toLowerCase().startsWith(prefix + `new`)) {
 	if(!subject[0]){
             ticketnumber++;
 			     const rerole = new Discord.RichEmbed()
-     .setDescription(`:x: Please first make a role called exactly \`\`${thisrole}\`\``)  
+     .setDescription(`:x: Please first make a role called exactly \`\`${srole}\`\``)  
      .setColor("22BF41");		    
         if (!thisrole) return message.channel.send(rerole);
 	          const already = new Discord.RichEmbed()
@@ -187,8 +197,8 @@ if(message.content.toLowerCase().startsWith(prefix + `new`)) {
 	
  if(subject[0]){
             ticketnumber++;
-			     const rerole = new Discord.RichEmbed()
-     .setDescription(`:x: Please first make a role called exactly \`\`${thisrole}\`\``)  
+ const rerole = new Discord.RichEmbed()
+     .setDescription(`:x: Please first make a role called exactly \`\`${srole}\`\``)  
      .setColor("22BF41");		    
         if (!thisrole) return message.channel.send(rerole);
 	          const already = new Discord.RichEmbed()
@@ -200,9 +210,9 @@ if(message.content.toLowerCase().startsWith(prefix + `new`)) {
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
 	if (message.channel.name.startsWith("ticket-" + ticketnumber)) return message.channel.send(already);
         message.guild.createChannel(`ticket-${ticketnumber}`, "text").then(ticketx => {
-	    ticketx.setParent(thiscategory);
-            let role = message.guild.roles.find("name", "● Élite » Team");
-            let role2 = message.guild.roles.find('name', thisrole);
+	       ticketx.setParent(thiscategory);
+            let role = message.guild.roles.find("name", srole);
+            let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
                 SEND_MESSAGES: true,
                 READ_MESSAGES: true
