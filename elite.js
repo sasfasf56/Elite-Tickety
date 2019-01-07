@@ -64,7 +64,7 @@ client.on("message", async message => {
      .setDescription(`:x: Usage: \`\`${prefix}setcategory <name>\`\``)  
      .setColor("22BF41");
 	if(!newcategory) return message.channel.send(NOTX1);
-	  setc[message.guild.id].channel = newcategory	
+	  setc[message.guild.id].category = newcategory	
 		  const D1 = new Discord.RichEmbed()
      .setDescription(`:white_check_mark: The tickets category has been set to \`\`${newcategory}\`\``)  
      .setColor("22BF41");
