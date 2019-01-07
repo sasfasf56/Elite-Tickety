@@ -63,7 +63,7 @@ client.on("message", async message => {
 }
     const role = setrole[message.guild.id].role
     const srole = setrole[message.guild.id].role
-    let thisrole = message.member.roles.has(srole);
+    let thisrole = message.member.roles.find("name", srole);
 	 const d11x1xx = new Discord.RichEmbed()
      .setDescription(`:x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`${srole}\`\` to yourself.`)  
      .setColor("22BF41");
