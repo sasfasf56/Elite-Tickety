@@ -109,7 +109,7 @@ client.on("message", async message => {
 		if(!thisrole) return message.channel.send(CANT);
 	  setrole[message.guild.id].role = newrole	
 		  const D1 = new Discord.RichEmbed()
-     .setDescription(`:white_check_mark: The tickets category has been set to \`\`${newrole}\`\``)  
+     .setDescription(`:white_check_mark: The tickets role has been set to \`\`${newrole}\`\``)  
      .setColor("22BF41");
 	message.channel.send(D1);
 		
@@ -153,7 +153,7 @@ if(message.content.toLowerCase().startsWith(prefix + `new`)) {
 	if (message.channel.name.startsWith("ticket-" + ticketnumber)) return message.channel.send(already);
         message.guild.createChannel(`ticket-${ticketnumber}`, "text").then(ticketx => {
 		ticketx.setParent(thiscategory);
-            let role = message.guild.roles.find('name', thisrole);
+            let role = message.guild.roles.find("name", srole);
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
                 SEND_MESSAGES: true,
