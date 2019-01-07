@@ -4,6 +4,7 @@ const client = new Discord.Client({disableEveryone: true});
 const prefix = "-";
 const fs = require('fs');
 const setc = {}
+const setrole = {}
 
 client.on('ready',  () => {
 console.log(`
@@ -56,7 +57,7 @@ client.on("message", async message => {
 		const category = setc[message.guild.id].category
 		let newcategory = message.content.split(' ').slice(1).join(' ');
 		let thiscategory = message.guild.channels.find('name', newcategory);
-		let fltrc = message.guild.channels.find(c => c.name.toLowerCase() === newcategory).type !== 'category';
+		let fltrc = message.guild.channels.filter(c => c.type === 'category');
 		let team = message.member.roles.find("name", "● Élite » Team");
 	 const d11x1xx = new Discord.RichEmbed()
      .setDescription(":x: You do not have permission for that command! If you believe this is a mistake please add the role called \`\`● Élite » Team\`\` to yourself.")  
@@ -83,6 +84,38 @@ client.on("message", async message => {
 	}
 });
 
+
+client.on("message", async message => {
+		 const nos = new Discord.RichEmbed()
+     .setDescription(`:x: This command only for servers`)
+     .setColor("22BF41");
+  if(!message.channel.guild) return message.channel.send(nos).then(m => m.delete(5000));
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
+	
+	if(message.content.toLowerCase().startsWith(prefix + `setrole`)){
+	if(!setrole[message.guild.id]) setrole[message.guild.id] = {
+    role: "Support Team"
+}
+		const role = setrole[message.guild.id].role
+		let newrole = message.content.split(' ').slice(1).join(' ');
+		let thisrole = message.guild.roles.find('name', newrole);
+     const NOTX1 = new Discord.RichEmbed()
+     .setDescription(`:x: Usage: \`\`${prefix}setrole <name>\`\``)  
+     .setColor("22BF41");
+	if(!newrole) return message.channel.send(NOTX1);
+		  const CANT = new Discord.RichEmbed()
+     .setDescription(`:x: I can't find this role \`\`${newrole}\`\``)  
+     .setColor("22BF41");
+		if(!thisrole) return message.channel.send(CANT);
+	  setrole[message.guild.id].role = newrole	
+		  const D1 = new Discord.RichEmbed()
+     .setDescription(`:white_check_mark: The tickets category has been set to \`\`${newrole}\`\``)  
+     .setColor("22BF41");
+	message.channel.send(D1);
+		
+	}
+});
+
 client.on("message", async message => {
 	 const nos = new Discord.RichEmbed()
      .setDescription(`:x: This command only for servers`)
@@ -96,14 +129,20 @@ if(message.content.toLowerCase().startsWith(prefix + `new`)) {
     const category = setc[message.guild.id].category
     const scategory = setc[message.guild.id].category
    let thiscategory = message.guild.channels.find('name', scategory);
+ if(!setrole[message.guild.id]) setrole[message.guild.id] = {
+    role: "Support Team"
+}
+    const role = setrole[message.guild.id].role
+    const srole = setrole[message.guild.id].role
+   let thisrole = message.guild.roles.find('name', srole);
    let subject = message.content.split(' ').slice(1).join(' '); 
    let ticketnumber = 0000;
 	if(!subject[0]){
             ticketnumber++;
 			     const rerole = new Discord.RichEmbed()
-     .setDescription(":x: Please first make a role called exactly \`\`● Élite » Team\`\`")  
+     .setDescription(`:x: Please first make a role called exactly \`\`${thisrole}\`\``)  
      .setColor("22BF41");		    
-        if (!message.guild.roles.exists("name", "● Élite » Team")) return message.channel.send(rerole);
+        if (!thisrole) return message.channel.send(rerole);
 	          const already = new Discord.RichEmbed()
      .setDescription(":x: You can only have \`\`1\`\` ticket in this server! you already have \`\`1\`\`")  
      .setColor("22BF41");
@@ -114,7 +153,7 @@ if(message.content.toLowerCase().startsWith(prefix + `new`)) {
 	if (message.channel.name.startsWith("ticket-" + ticketnumber)) return message.channel.send(already);
         message.guild.createChannel(`ticket-${ticketnumber}`, "text").then(ticketx => {
 		ticketx.setParent(thiscategory);
-            let role = message.guild.roles.find("name", "● Élite » Team");
+            let role = message.guild.roles.find('name', thisrole);
             let role2 = message.guild.roles.find("name", "@everyone");
             ticketx.overwritePermissions(role, {
                 SEND_MESSAGES: true,
@@ -149,9 +188,9 @@ if(message.content.toLowerCase().startsWith(prefix + `new`)) {
  if(subject[0]){
             ticketnumber++;
 			     const rerole = new Discord.RichEmbed()
-     .setDescription(":x: Please first make a role called exactly \`\`● Élite » Team\`\`")  
+     .setDescription(`:x: Please first make a role called exactly \`\`${thisrole}\`\``)  
      .setColor("22BF41");		    
-        if (!message.guild.roles.exists("name", "● Élite » Team")) return message.channel.send(rerole);
+        if (!thisrole) return message.channel.send(rerole);
 	          const already = new Discord.RichEmbed()
      .setDescription(":x: You can only have \`\`1\`\` ticket in this server! you already have \`\`1\`\`")  
      .setColor("22BF41");
@@ -161,8 +200,9 @@ if(message.content.toLowerCase().startsWith(prefix + `new`)) {
 	if (message.channel.name.startsWith("ticket-")) return message.channel.send(already);
 	if (message.channel.name.startsWith("ticket-" + ticketnumber)) return message.channel.send(already);
         message.guild.createChannel(`ticket-${ticketnumber}`, "text").then(ticketx => {
+	    ticketx.setParent(thiscategory);
             let role = message.guild.roles.find("name", "● Élite » Team");
-            let role2 = message.guild.roles.find("name", "@everyone");
+            let role2 = message.guild.roles.find('name', thisrole);
             ticketx.overwritePermissions(role, {
                 SEND_MESSAGES: true,
                 READ_MESSAGES: true
