@@ -50,9 +50,9 @@ client.on("message", async message => {
   if (!message.content.startsWith(prefix) || message.author.bot) return;
 if(message.content.toLowerCase().startsWith(prefix + `new`)) {
    let subject = message.content.split(' ').slice(1).join(' '); 
-   let ticketnumber = 0;
+   let ticketnumber = 0000;
 	if(!subject[0]){
-            ticketnumber++;
+            ticketnumber+;
             fs.writeFile("./Data/tickets.json", JSON.stringify(read), (err) => console.error);
 			     const rerole = new Discord.RichEmbed()
      .setDescription(":x: Please first make a role called exactly \`\`● Élite » Team\`\`")  
