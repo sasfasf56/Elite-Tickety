@@ -57,7 +57,7 @@ client.on("message", async message => {
 		const category = setc[message.guild.id].category
 		let newcategory = message.content.split(' ').slice(1).join(' ');
 		let thiscategory = message.guild.channels.find('name', newcategory);
-		let fltrc = message.guild.channels.find(t => t.type !== 'category');
+                let fltrc = message.guild.channels.find(channel => channel.name === newcategory).type !== 'category';
  if(!setrole[message.guild.id]) setrole[message.guild.id] = {
     role: "Support Team"
 }
